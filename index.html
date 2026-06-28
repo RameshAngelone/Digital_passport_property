@@ -1,0 +1,2687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+    <meta name="theme-color" content="#0A1628" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <title>Digital Property Passport · Ishananad</title>
+
+    <!-- ===== PREMIUM FONTS ===== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet" />
+
+    <!-- ===== FONT AWESOME 6 (FREE) ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        /* ==========================================================
+               CSS — STYLE.SHEET
+               ========================================================== */
+
+        /* ----- RESET & BASE ----- */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy: #0A1628;
+            --navy-light: #132044;
+            --navy-mid: #1a2a4a;
+            --gold: #C9A84C;
+            --gold-light: #e8d5a3;
+            --gold-glow: rgba(201, 168, 76, 0.25);
+            --white: #FFFFFF;
+            --gray-50: #F8F9FC;
+            --gray-100: #F0F2F8;
+            --gray-200: #E4E7F0;
+            --gray-300: #CDD2E0;
+            --gray-400: #9AA2B8;
+            --gray-500: #6B748C;
+            --gray-600: #4A5268;
+            --shadow-sm: 0 2px 8px rgba(10, 22, 40, 0.06);
+            --shadow-md: 0 8px 32px rgba(10, 22, 40, 0.10);
+            --shadow-lg: 0 16px 64px rgba(10, 22, 40, 0.14);
+            --shadow-xl: 0 24px 80px rgba(10, 22, 40, 0.18);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 28px;
+            --radius-xl: 36px;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --font-serif: 'Playfair Display', Georgia, serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--white);
+            color: var(--navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ----- SCROLLBAR ----- */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--gray-100);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 12px;
+        }
+
+        /* ----- UTILITY ----- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 60px 0 80px;
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(1.6rem, 5vw, 2.6rem);
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+            color: var(--gray-500);
+            font-weight: 400;
+            margin-bottom: 32px;
+        }
+
+        .gold-accent {
+            color: var(--gold);
+        }
+
+        .text-gold {
+            color: var(--gold);
+        }
+
+        .bg-gold {
+            background: var(--gold);
+        }
+
+        /* ----- GLASS CARD ----- */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.70);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.50);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+        }
+
+        .glass-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+            border-color: rgba(201, 168, 76, 0.20);
+        }
+
+        /* ----- BUTTONS ----- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 60px;
+            font-family: var(--font-sans);
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: none;
+            cursor: pointer;
+            transition: all var(--transition);
+            text-decoration: none;
+            letter-spacing: 0.01em;
+            background: var(--navy);
+            color: var(--white);
+            box-shadow: 0 4px 16px rgba(10, 22, 40, 0.12);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(10, 22, 40, 0.20);
+        }
+
+        .btn:active {
+            transform: scale(0.97);
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--navy);
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.30);
+        }
+
+        .btn-gold:hover {
+            background: #b8983a;
+            box-shadow: 0 8px 32px rgba(201, 168, 76, 0.40);
+            color: var(--navy);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--navy);
+            border: 2px solid var(--gray-300);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(201, 168, 76, 0.06);
+        }
+
+        .btn-sm {
+            padding: 10px 20px;
+            font-size: 0.85rem;
+        }
+
+        .btn-icon {
+            width: 48px;
+            height: 48px;
+            padding: 0;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        /* ==========================================================
+               HEADER / NAV
+               ========================================================== */
+        .app-header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            padding: 12px 0;
+            transition: all var(--transition);
+        }
+
+        .app-header.scrolled {
+            box-shadow: 0 4px 24px rgba(10, 22, 40, 0.06);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .header-brand .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: var(--navy);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.4rem;
+            font-weight: 700;
+            font-family: var(--font-serif);
+            flex-shrink: 0;
+            box-shadow: 0 4px 12px rgba(10, 22, 40, 0.10);
+        }
+
+        .header-brand .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+        .header-brand .logo-text small {
+            display: block;
+            font-weight: 400;
+            font-size: 0.65rem;
+            color: var(--gray-500);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .header-actions .btn-icon {
+            width: 42px;
+            height: 42px;
+            background: transparent;
+            color: var(--navy);
+            box-shadow: none;
+            border-radius: 50%;
+            font-size: 1.1rem;
+        }
+        .header-actions .btn-icon:hover {
+            background: var(--gray-100);
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* ----- MOBILE NAV TOGGLE ----- */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--navy);
+            border-radius: 4px;
+            transition: all var(--transition);
+        }
+        .nav-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .nav-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* ----- SIDEBAR NAV (Mobile) ----- */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--white);
+            z-index: 1100;
+            padding: 24px 20px 40px;
+            overflow-y: auto;
+            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: var(--shadow-xl);
+            border-right: 1px solid var(--gray-100);
+        }
+        .mobile-nav.open {
+            left: 0;
+        }
+
+        .mobile-nav .nav-close {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+        .mobile-nav .nav-close button {
+            background: transparent;
+            border: none;
+            font-size: 1.6rem;
+            color: var(--gray-500);
+            cursor: pointer;
+            padding: 4px 8px;
+        }
+
+        .mobile-nav .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .mobile-nav .nav-list li a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border-radius: var(--radius-sm);
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all var(--transition);
+        }
+        .mobile-nav .nav-list li a:hover,
+        .mobile-nav .nav-list li a.active {
+            background: var(--gray-100);
+            color: var(--gold);
+        }
+        .mobile-nav .nav-list li a i {
+            width: 24px;
+            color: var(--gray-500);
+            font-size: 1.1rem;
+        }
+        .mobile-nav .nav-list li a.active i {
+            color: var(--gold);
+        }
+
+        .nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 22, 40, 0.40);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 1050;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .nav-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* ==========================================================
+               PAGES / SECTIONS
+               ========================================================== */
+        .page {
+            display: none;
+            animation: pageFadeIn 0.45s ease forwards;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        @keyframes pageFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ==========================================================
+               HOME — DASHBOARD
+               ========================================================== */
+        .hero-banner {
+            position: relative;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            background: var(--navy);
+            padding: 40px 36px;
+            margin-bottom: 32px;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -10%;
+            width: 60%;
+            height: 180%;
+            background: radial-gradient(ellipse, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-banner .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-banner .hero-badge {
+            display: inline-block;
+            background: rgba(201, 168, 76, 0.18);
+            color: var(--gold-light);
+            padding: 4px 16px;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero-banner h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            color: var(--white);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+
+        .hero-banner .hero-meta {
+            color: rgba(255, 255, 255, 0.70);
+            font-size: clamp(0.9rem, 1.2vw, 1.1rem);
+            font-weight: 400;
+            margin-bottom: 16px;
+        }
+
+        .hero-banner .hero-meta strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .hero-banner .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .hero-banner .hero-actions .btn {
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            background: rgba(255, 255, 255, 0.10);
+            color: var(--white);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: none;
+            backdrop-filter: blur(4px);
+        }
+        .hero-banner .hero-actions .btn:hover {
+            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-2px);
+        }
+        .hero-banner .hero-actions .btn-gold {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+        .hero-banner .hero-actions .btn-gold:hover {
+            background: #b8983a;
+            border-color: #b8983a;
+        }
+
+        /* ----- DASHBOARD GRID ----- */
+        .dash-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .dash-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 20px 16px;
+            text-align: center;
+            border: 1px solid var(--gray-100);
+            transition: all var(--transition);
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+            text-decoration: none;
+            color: var(--navy);
+        }
+
+        .dash-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--gold);
+        }
+
+        .dash-card .dash-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 1.4rem;
+            color: var(--gold);
+            transition: all var(--transition);
+        }
+
+        .dash-card:hover .dash-icon {
+            background: var(--gold);
+            color: var(--white);
+        }
+
+        .dash-card .dash-label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: -0.01em;
+        }
+
+        .dash-card .dash-count {
+            font-size: 0.7rem;
+            color: var(--gray-400);
+            font-weight: 400;
+        }
+
+        /* ----- QUICK CONTACT ROW ----- */
+        .quick-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            padding: 20px 0 8px;
+        }
+
+        .quick-contact .btn {
+            flex: 1 1 auto;
+            min-width: 100px;
+            padding: 12px 18px;
+            font-size: 0.85rem;
+            background: var(--gray-50);
+            color: var(--navy);
+            border: 1px solid var(--gray-200);
+            box-shadow: none;
+            border-radius: 60px;
+        }
+        .quick-contact .btn i {
+            color: var(--gold);
+        }
+        .quick-contact .btn:hover {
+            background: var(--white);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+        .quick-contact .btn-gold {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+        .quick-contact .btn-gold i {
+            color: var(--navy);
+        }
+
+        /* ==========================================================
+               PAGE HEADER
+               ========================================================== */
+        .page-header {
+            margin-bottom: 32px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .page-header .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray-500);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+            transition: color var(--transition);
+        }
+        .page-header .back-link:hover {
+            color: var(--gold);
+        }
+
+        /* ==========================================================
+               CARDS GRID (generic)
+               ========================================================== */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card-grid-2 {
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        }
+
+        .info-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            border: 1px solid var(--gray-100);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+        }
+
+        .info-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: rgba(201, 168, 76, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .info-card .card-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--navy);
+        }
+
+        .info-card .card-title i {
+            color: var(--gold);
+            font-size: 1.2rem;
+            width: 28px;
+        }
+
+        .info-card .card-body {
+            color: var(--gray-600);
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        .info-card .card-body .label {
+            font-weight: 500;
+            color: var(--navy);
+        }
+
+        .info-card .card-body .value {
+            color: var(--gray-600);
+        }
+
+        .info-card .card-body .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .info-card .card-body .row:last-child {
+            border-bottom: none;
+        }
+
+        /* ==========================================================
+               DOCUMENT CARDS
+               ========================================================== */
+        .doc-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid var(--gray-100);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .doc-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: rgba(201, 168, 76, 0.20);
+            transform: translateY(-2px);
+        }
+
+        .doc-card .doc-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+
+        .doc-card .doc-info {
+            flex: 1;
+        }
+        .doc-card .doc-info .doc-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .doc-card .doc-info .doc-meta {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        .doc-card .doc-actions {
+            display: flex;
+            gap: 6px;
+        }
+        .doc-card .doc-actions .btn {
+            padding: 6px 12px;
+            font-size: 0.75rem;
+            border-radius: 30px;
+            background: var(--gray-50);
+            color: var(--navy);
+            border: 1px solid var(--gray-200);
+            box-shadow: none;
+        }
+        .doc-card .doc-actions .btn:hover {
+            border-color: var(--gold);
+            background: var(--white);
+        }
+
+        /* ==========================================================
+               WARRANTY CARDS
+               ========================================================== */
+        .warranty-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1px solid var(--gray-100);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            overflow: hidden;
+        }
+
+        .warranty-card:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-3px);
+            border-color: rgba(201, 168, 76, 0.15);
+        }
+
+        .warranty-card .warranty-img {
+            width: 100%;
+            height: 120px;
+            border-radius: var(--radius-sm);
+            background: var(--gray-100);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            color: var(--gray-300);
+        }
+
+        .warranty-card .warranty-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 2px;
+        }
+
+        .warranty-card .warranty-brand {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin-bottom: 8px;
+        }
+
+        .warranty-card .warranty-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4px 12px;
+            font-size: 0.82rem;
+            color: var(--gray-600);
+            margin-bottom: 12px;
+        }
+
+        .warranty-card .warranty-meta .meta-label {
+            color: var(--gray-400);
+        }
+
+        .warranty-card .warranty-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .warranty-card .warranty-actions .btn {
+            padding: 8px 16px;
+            font-size: 0.78rem;
+            border-radius: 30px;
+            background: var(--gray-50);
+            color: var(--navy);
+            border: 1px solid var(--gray-200);
+            box-shadow: none;
+            flex: 1;
+        }
+        .warranty-card .warranty-actions .btn:hover {
+            border-color: var(--gold);
+            background: var(--white);
+        }
+        .warranty-card .warranty-actions .btn-gold {
+            background: var(--gold);
+            color: var(--navy);
+            border-color: var(--gold);
+        }
+
+        /* ==========================================================
+               SERVICE REQUEST ICONS
+               ========================================================== */
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 14px;
+        }
+
+        .service-item {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 20px 12px;
+            text-align: center;
+            border: 1px solid var(--gray-100);
+            transition: all var(--transition);
+            cursor: pointer;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .service-item:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--gold);
+        }
+
+        .service-item .service-icon {
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .service-item .service-label {
+            font-weight: 500;
+            font-size: 0.8rem;
+            color: var(--navy);
+        }
+
+        /* ==========================================================
+               EMERGENCY
+               ========================================================== */
+        .emergency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 14px;
+        }
+
+        .emergency-item {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 18px 16px;
+            border-left: 4px solid var(--gold);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .emergency-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .emergency-item .emergency-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .emergency-item .emergency-number {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 0.02em;
+        }
+
+        .emergency-item .emergency-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 6px;
+        }
+        .emergency-item .emergency-actions .btn {
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            border-radius: 30px;
+            background: var(--gray-50);
+            color: var(--navy);
+            border: 1px solid var(--gray-200);
+            box-shadow: none;
+        }
+        .emergency-item .emergency-actions .btn:hover {
+            border-color: var(--gold);
+            background: var(--white);
+        }
+
+        /* ==========================================================
+               NOTICE BOARD
+               ========================================================== */
+        .notice-item {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            border: 1px solid var(--gray-100);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            margin-bottom: 14px;
+        }
+
+        .notice-item:hover {
+            box-shadow: var(--shadow-md);
+            border-color: rgba(201, 168, 76, 0.15);
+        }
+
+        .notice-item .notice-title {
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .notice-item .notice-title .badge {
+            font-size: 0.6rem;
+            font-weight: 600;
+            padding: 2px 12px;
+            border-radius: 60px;
+            background: var(--gold);
+            color: var(--navy);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+        }
+        .notice-item .notice-meta {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            margin-top: 4px;
+        }
+        .notice-item .notice-body {
+            margin-top: 10px;
+            color: var(--gray-600);
+            font-size: 0.92rem;
+        }
+
+        /* ==========================================================
+               GALLERY
+               ========================================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 16px;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            aspect-ratio: 1/1;
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            color: var(--gray-300);
+            transition: all var(--transition);
+            cursor: pointer;
+            border: 1px solid var(--gray-100);
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-md);
+            border-color: var(--gold);
+        }
+
+        /* ==========================================================
+               FEEDBACK
+               ========================================================== */
+        .feedback-stars {
+            display: flex;
+            gap: 8px;
+            font-size: 2rem;
+            color: var(--gray-300);
+            cursor: pointer;
+            margin-bottom: 16px;
+        }
+        .feedback-stars .star.active {
+            color: var(--gold);
+        }
+
+        .feedback-form textarea {
+            width: 100%;
+            padding: 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--gray-200);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            resize: vertical;
+            min-height: 120px;
+            transition: border var(--transition);
+        }
+        .feedback-form textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.10);
+        }
+
+        /* ==========================================================
+               BANK / EMI
+               ========================================================== */
+        .bank-card {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            padding: 24px;
+            border: 1px solid var(--gray-100);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .bank-card:hover {
+            box-shadow: var(--shadow-md);
+            border-color: rgba(201, 168, 76, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .bank-card .bank-rep {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .bank-card .bank-rep .rep-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--gold);
+        }
+        .bank-card .bank-rep .rep-name {
+            font-weight: 600;
+        }
+        .bank-card .bank-rep .rep-role {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+        }
+
+        .bank-card .bank-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 6px;
+        }
+        .bank-card .bank-actions .btn {
+            padding: 8px 16px;
+            font-size: 0.78rem;
+            border-radius: 30px;
+            background: var(--gray-50);
+            color: var(--navy);
+            border: 1px solid var(--gray-200);
+            box-shadow: none;
+        }
+        .bank-card .bank-actions .btn:hover {
+            border-color: var(--gold);
+            background: var(--white);
+        }
+
+        /* ==========================================================
+               AI FLOATING BUTTON
+               ========================================================== */
+        .ai-fab {
+            position: fixed;
+            bottom: 28px;
+            right: 28px;
+            z-index: 900;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: var(--gold);
+            border: none;
+            box-shadow: 0 8px 32px rgba(10, 22, 40, 0.25);
+            font-size: 1.6rem;
+            cursor: pointer;
+            transition: all var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .ai-fab:hover {
+            transform: scale(1.08);
+            box-shadow: 0 12px 48px rgba(10, 22, 40, 0.35);
+        }
+
+        .ai-fab .pulse {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: rgba(201, 168, 76, 0.15);
+            animation: pulseRing 2.4s ease-in-out infinite;
+        }
+
+        @keyframes pulseRing {
+            0% {
+                transform: scale(1);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1.6);
+                opacity: 0;
+            }
+        }
+
+        /* ----- AI CHAT MODAL ----- */
+        .ai-modal {
+            position: fixed;
+            bottom: 100px;
+            right: 28px;
+            width: 360px;
+            max-width: 92vw;
+            max-height: 480px;
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--gray-100);
+            z-index: 950;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            animation: slideUp 0.3s ease;
+        }
+
+        .ai-modal.open {
+            display: flex;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .ai-modal .ai-header {
+            padding: 16px 20px;
+            background: var(--navy);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-shrink: 0;
+        }
+        .ai-modal .ai-header h4 {
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .ai-modal .ai-header h4 i {
+            color: var(--gold);
+        }
+        .ai-modal .ai-header .close-ai {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .ai-modal .ai-messages {
+            flex: 1;
+            padding: 16px 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-height: 200px;
+            max-height: 300px;
+        }
+
+        .ai-modal .ai-messages .msg {
+            padding: 12px 16px;
+            border-radius: var(--radius-sm);
+            max-width: 88%;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            animation: msgIn 0.25s ease;
+        }
+
+        @keyframes msgIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ai-modal .ai-messages .msg.bot {
+            background: var(--gray-100);
+            color: var(--navy);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .ai-modal .ai-messages .msg.user {
+            background: var(--gold);
+            color: var(--navy);
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+        }
+
+        .ai-modal .ai-input {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            border-top: 1px solid var(--gray-100);
+            flex-shrink: 0;
+            background: var(--gray-50);
+        }
+
+        .ai-modal .ai-input input {
+            flex: 1;
+            padding: 10px 14px;
+            border-radius: 60px;
+            border: 1px solid var(--gray-200);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            outline: none;
+            transition: border var(--transition);
+        }
+        .ai-modal .ai-input input:focus {
+            border-color: var(--gold);
+        }
+
+        .ai-modal .ai-input button {
+            padding: 10px 18px;
+            border-radius: 60px;
+            border: none;
+            background: var(--gold);
+            color: var(--navy);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .ai-modal .ai-input button:hover {
+            background: #b8983a;
+        }
+
+        /* ==========================================================
+               DARK MODE
+               ========================================================== */
+        body.dark-mode {
+            --white: #0F1A2E;
+            --gray-50: #162033;
+            --gray-100: #1E2A42;
+            --gray-200: #2A3A58;
+            --gray-300: #3E5270;
+            --gray-400: #6B7F9B;
+            --gray-500: #94A7C0;
+            --gray-600: #B8C8DD;
+            --navy: #E8EDF5;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.30);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.40);
+            --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.50);
+            --shadow-xl: 0 24px 80px rgba(0, 0, 0, 0.55);
+        }
+
+        body.dark-mode .app-header {
+            background: rgba(15, 26, 46, 0.92);
+            border-bottom-color: rgba(255, 255, 255, 0.04);
+        }
+
+        body.dark-mode .glass-card {
+            background: rgba(15, 26, 46, 0.70);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        body.dark-mode .dash-card,
+        body.dark-mode .info-card,
+        body.dark-mode .doc-card,
+        body.dark-mode .warranty-card,
+        body.dark-mode .service-item,
+        body.dark-mode .emergency-item,
+        body.dark-mode .notice-item,
+        body.dark-mode .bank-card,
+        body.dark-mode .gallery-item {
+            background: var(--gray-50);
+            border-color: var(--gray-200);
+        }
+
+        body.dark-mode .hero-banner {
+            background: var(--gray-100);
+        }
+
+        body.dark-mode .ai-modal {
+            background: var(--gray-50);
+            border-color: var(--gray-200);
+        }
+
+        body.dark-mode .ai-modal .ai-header {
+            background: var(--gray-100);
+        }
+
+        body.dark-mode .ai-modal .ai-messages .msg.bot {
+            background: var(--gray-200);
+            color: var(--white);
+        }
+
+        body.dark-mode .quick-contact .btn {
+            background: var(--gray-100);
+            color: var(--white);
+            border-color: var(--gray-200);
+        }
+
+        body.dark-mode .header-actions .btn-icon {
+            color: var(--white);
+        }
+
+        /* ==========================================================
+               RESPONSIVE
+               ========================================================== */
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 32px 0 48px;
+            }
+
+            .hero-banner {
+                padding: 28px 20px;
+                min-height: 160px;
+                border-radius: var(--radius-md);
+            }
+
+            .dash-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 12px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card-grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            }
+
+            .emergency-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
+
+            .mobile-nav {
+                width: 280px;
+            }
+
+            .nav-toggle {
+                display: flex;
+            }
+
+            .header-actions .btn-icon {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+
+            .ai-modal {
+                bottom: 88px;
+                right: 16px;
+                width: calc(100vw - 32px);
+                max-height: 420px;
+            }
+
+            .ai-fab {
+                width: 52px;
+                height: 52px;
+                font-size: 1.3rem;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .quick-contact .btn {
+                min-width: 70px;
+                padding: 10px 14px;
+                font-size: 0.78rem;
+            }
+
+            .warranty-card .warranty-meta {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dash-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .dash-card {
+                padding: 14px 8px;
+            }
+            .dash-card .dash-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            .dash-card .dash-label {
+                font-size: 0.7rem;
+            }
+
+            .emergency-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero-banner h1 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-nav,
+            .nav-overlay {
+                display: none !important;
+            }
+            .nav-toggle {
+                display: none !important;
+            }
+        }
+
+        /* ==========================================================
+               MISC HELPERS
+               ========================================================== */
+        .mt-8 {
+            margin-top: 8px;
+        }
+        .mt-16 {
+            margin-top: 16px;
+        }
+        .mt-24 {
+            margin-top: 24px;
+        }
+        .mb-16 {
+            margin-bottom: 16px;
+        }
+        .mb-24 {
+            margin-bottom: 24px;
+        }
+        .flex {
+            display: flex;
+        }
+        .flex-center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gap-8 {
+            gap: 8px;
+        }
+        .gap-12 {
+            gap: 12px;
+        }
+        .gap-16 {
+            gap: 16px;
+        }
+        .flex-wrap {
+            flex-wrap: wrap;
+        }
+        .text-center {
+            text-align: center;
+        }
+        .w-full {
+            width: 100%;
+        }
+
+        .badge-gold {
+            display: inline-block;
+            padding: 2px 14px;
+            border-radius: 60px;
+            background: var(--gold);
+            color: var(--navy);
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .badge-outline {
+            display: inline-block;
+            padding: 2px 14px;
+            border-radius: 60px;
+            border: 1px solid var(--gray-300);
+            color: var(--gray-500);
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        /* QR CODE placeholder */
+        .qr-placeholder {
+            width: 80px;
+            height: 80px;
+            background: var(--gray-100);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            color: var(--gray-300);
+            border: 2px dashed var(--gray-200);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================================
+    NAV OVERLAY
+    ========================================================== -->
+    <div class="nav-overlay" id="navOverlay"></div>
+
+    <!-- ==========================================================
+    MOBILE NAV
+    ========================================================== -->
+    <nav class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile Navigation">
+        <div class="nav-close">
+            <button id="closeMobileNav" aria-label="Close navigation">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <ul class="nav-list">
+            <li><a href="#" data-page="home" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+            <li><a href="#" data-page="builder"><i class="fas fa-building"></i> Builder</a></li>
+            <li><a href="#" data-page="property"><i class="fas fa-home"></i> Property</a></li>
+            <li><a href="#" data-page="documents"><i class="fas fa-file-alt"></i> Documents</a></li>
+            <li><a href="#" data-page="warranty"><i class="fas fa-shield-alt"></i> Warranty</a></li>
+            <li><a href="#" data-page="services"><i class="fas fa-tools"></i> Services</a></li>
+            <li><a href="#" data-page="bank"><i class="fas fa-university"></i> Bank</a></li>
+            <li><a href="#" data-page="emergency"><i class="fas fa-phone-alt"></i> Emergency</a></li>
+            <li><a href="#" data-page="notice"><i class="fas fa-bullhorn"></i> Notices</a></li>
+            <li><a href="#" data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
+            <li><a href="#" data-page="feedback"><i class="fas fa-star"></i> Feedback</a></li>
+            <li><a href="#" data-page="downloads"><i class="fas fa-download"></i> Downloads</a></li>
+            <li><a href="#" data-page="support"><i class="fas fa-headset"></i> Support</a></li>
+        </ul>
+    </nav>
+
+    <!-- ==========================================================
+    APP HEADER
+    ========================================================== -->
+    <header class="app-header" id="appHeader" role="banner">
+        <div class="container header-inner">
+            <a href="#" class="header-brand" data-page="home">
+                <span class="logo-icon">DP</span>
+                <span class="logo-text">
+                    Digital Passport
+                    <small>Ishananad · Wanwadi</small>
+                </span>
+            </a>
+
+            <div class="header-actions">
+                <!-- Dark Mode Toggle -->
+                <button class="btn-icon" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <!-- Search (demo) -->
+                <button class="btn-icon" id="searchToggle" aria-label="Search" title="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <!-- Mobile Nav Toggle -->
+                <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ==========================================================
+    MAIN CONTENT
+    ========================================================== -->
+    <main>
+
+        <!-- ==========================================================
+        PAGE: HOME
+        ========================================================== -->
+        <section class="page active" id="page-home" role="tabpanel">
+            <div class="container section-padding">
+
+                <!-- HERO BANNER -->
+                <div class="hero-banner">
+                    <div class="hero-content">
+                        <span class="hero-badge"><i class="fas fa-crown"></i> Premium Living</span>
+                        <h1>Ishananad</h1>
+                        <div class="hero-meta">
+                            <strong>Makwana Brows and Co.</strong> &middot; Wanwadi, Pune
+                        </div>
+                        <div class="hero-actions">
+                            <a href="#" class="btn btn-gold" data-page="property"><i class="fas fa-home"></i> View Property</a>
+                            <a href="#" class="btn" data-page="documents"><i class="fas fa-file-alt"></i> Documents</a>
+                            <a href="#" class="btn" data-page="warranty"><i class="fas fa-shield-alt"></i> Warranty</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QUICK CONTACT -->
+                <div class="quick-contact">
+                    <a href="tel:+919876543210" class="btn"><i class="fas fa-phone"></i> Call</a>
+                    <a href="https://wa.me/919876543210" target="_blank" class="btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="mailto:info@ishananad.com" class="btn"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="#" class="btn" onclick="alert('Opening Google Maps…')"><i class="fas fa-map-marker-alt"></i> Map</a>
+                    <a href="#" class="btn" onclick="alert('Contact saved to device.')"><i class="fas fa-address-book"></i> Save</a>
+                    <a href="#" class="btn" onclick="alert('QR Code scanned.')"><i class="fas fa-qrcode"></i> QR</a>
+                </div>
+
+                <!-- DASHBOARD GRID -->
+                <div class="dash-grid">
+                    <a href="#" class="dash-card" data-page="builder">
+                        <div class="dash-icon"><i class="fas fa-building"></i></div>
+                        <div class="dash-label">Builder</div>
+                        <div class="dash-count">Info</div>
+                    </a>
+                    <a href="#" class="dash-card" data-page="property">
+                        <div class="dash-icon"><i class="fas fa-home"></i></div>
+                        <div class="dash-label">Property</div>
+                        <div class="dash-count">Details</div>
+                    </a>
+                    <a href="#" class="dash-card" data-page="documents">
+                        <div class="dash-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="dash-label">Documents</div>
+                        <div class="dash-count">14</div>
+                    </a>
+                    <a href="#" class="dash-card" data-page="warranty">
+                        <div class="dash-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="dash-label">Warranty</div>
+                        <div class="dash-count">18</div>
+                    </a>
+                    <a href="#" class="dash-card" data-page="services">
+                        <div class="dash-icon"><i class="fas fa-tools"></i></div>
+                        <div class="dash-label">Services</div>
+                        <div class="dash-count">Request</div>
+                    </a>
+                    <a href="#" class="dash-card" data-page="bank">
+                        <div class="dash-icon"><i class="fas fa-university"></i></div>
+                        <div class="dash-label">Bank</div>
+                        <div class="dash-count">Loans</div>
+                    </a>
+                    <a href="#" class="dash-card" data-page="emergency">
+                        <div class="dash-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="dash-label">Emergency</div>
+                        <div class="dash-count">12</div>
+                    </a>
+                    <a href="#" class="dash-card" data-page="notice">
+                        <div class="dash-icon"><i class="fas fa-bullhorn"></i></div>
+                        <div class="dash-label">Notices</div>
+                        <div class="dash-count">5</div>
+                    </a>
+                    <a href="#" class="dash-card" data-page="gallery">
+                        <div class="dash-icon"><i class="fas fa-images"></i></div>
+                        <div class="dash-label">Gallery</div>
+                        <div class="dash-count">24</div>
+                    </a>
+                    <a href="#" class="dash-card" data-page="feedback">
+                        <div class="dash-icon"><i class="fas fa-star"></i></div>
+                        <div class="dash-label">Feedback</div>
+                        <div class="dash-count">Rate</div>
+                    </a>
+                    <a href="#" class="dash-card" data-page="downloads">
+                        <div class="dash-icon"><i class="fas fa-download"></i></div>
+                        <div class="dash-label">Downloads</div>
+                        <div class="dash-count">All</div>
+                    </a>
+                    <a href="#" class="dash-card" data-page="support">
+                        <div class="dash-icon"><i class="fas fa-headset"></i></div>
+                        <div class="dash-label">Support</div>
+                        <div class="dash-count">24/7</div>
+                    </a>
+                </div>
+
+                <!-- FOOTER NOTE -->
+                <div style="text-align:center;padding:20px 0 8px;color:var(--gray-400);font-size:0.8rem;border-top:1px solid var(--gray-100);">
+                    <i class="fas fa-qrcode" style="margin-right:6px;color:var(--gold);"></i>
+                    NFC Ready &bull; PWA &bull; Offline Ready
+                    <span style="display:inline-block;margin:0 10px;">|</span>
+                    <i class="fas fa-mobile-alt" style="color:var(--gold);"></i> Install App
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: BUILDER
+        ========================================================== -->
+        <section class="page" id="page-builder" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Builder Information</h2>
+                    <p class="section-subtitle">Makwana Brows and Co. — Company profile &amp; contact</p>
+                </div>
+
+                <div class="card-grid card-grid-2">
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-building"></i> Company Profile</div>
+                        <div class="card-body">
+                            <p><strong>Makwana Brows and Co.</strong> is a premier real estate developer with over 25 years of excellence in crafting luxury residential and commercial spaces across Pune. Known for timeless design, quality construction, and on-time delivery.</p>
+                            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+                                <span class="badge-gold">RERA: PUN-RERA-2024-12345</span>
+                                <span class="badge-outline">ISO 9001:2021</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-user-tie"></i> Director Details</div>
+                        <div class="card-body">
+                            <div class="row"><span class="label">Name</span><span class="value">Mr. Rajendra Makwana</span></div>
+                            <div class="row"><span class="label">Designation</span><span class="value">Managing Director</span></div>
+                            <div class="row"><span class="label">Experience</span><span class="value">28 Years</span></div>
+                            <div class="row"><span class="label">Email</span><span class="value">rajendra@makwana.com</span></div>
+                            <div class="row"><span class="label">Mobile</span><span class="value">+91 98220 12345</span></div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-map-pin"></i> Office Address</div>
+                        <div class="card-body">
+                            <p>101, Corporate House,<br />SB Road, Pune – 411016,<br />Maharashtra, India.</p>
+                            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+                                <a href="#" class="btn btn-sm btn-outline" onclick="alert('Opening Google Maps…')"><i class="fas fa-map-marker-alt"></i> Map</a>
+                                <a href="tel:+91202561234" class="btn btn-sm btn-outline"><i class="fas fa-phone"></i> Call</a>
+                                <a href="mailto:info@makwana.com" class="btn btn-sm btn-outline"><i class="fas fa-envelope"></i> Email</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-clock"></i> Office Timing</div>
+                        <div class="card-body">
+                            <div class="row"><span class="label">Monday – Friday</span><span class="value">9:00 AM – 6:00 PM</span></div>
+                            <div class="row"><span class="label">Saturday</span><span class="value">9:00 AM – 2:00 PM</span></div>
+                            <div class="row"><span class="label">Sunday</span><span class="value">Closed</span></div>
+                            <div style="margin-top:12px;">
+                                <span class="badge-gold"><i class="fas fa-check-circle"></i> Open Now</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Office Photos -->
+                <h3 style="font-weight:600;font-size:1.1rem;margin:32px 0 16px;"><i class="fas fa-images gold-accent" style="margin-right:8px;"></i> Office Photos</h3>
+                <div class="gallery-grid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr));">
+                    <div class="gallery-item" style="background:var(--gray-100);font-size:1.2rem;color:var(--gray-400);">🏢</div>
+                    <div class="gallery-item" style="background:var(--gray-100);font-size:1.2rem;color:var(--gray-400);">🪑</div>
+                    <div class="gallery-item" style="background:var(--gray-100);font-size:1.2rem;color:var(--gray-400);">🌿</div>
+                    <div class="gallery-item" style="background:var(--gray-100);font-size:1.2rem;color:var(--gray-400);">📐</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: PROPERTY
+        ========================================================== -->
+        <section class="page" id="page-property" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Property Information</h2>
+                    <p class="section-subtitle">Ishananad — Wanwadi, Pune</p>
+                </div>
+
+                <div class="card-grid card-grid-2">
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-tag"></i> Property Details</div>
+                        <div class="card-body">
+                            <div class="row"><span class="label">Project</span><span class="value">Ishananad</span></div>
+                            <div class="row"><span class="label">Tower</span><span class="value">A</span></div>
+                            <div class="row"><span class="label">Wing</span><span class="value">East</span></div>
+                            <div class="row"><span class="label">Flat No.</span><span class="value">A-1202</span></div>
+                            <div class="row"><span class="label">Floor</span><span class="value">12</span></div>
+                            <div class="row"><span class="label">Possession</span><span class="value">15 Dec 2026</span></div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-car"></i> Parking &amp; Club</div>
+                        <div class="card-body">
+                            <div class="row"><span class="label">Parking</span><span class="value">2 Covered + 1 Visitor</span></div>
+                            <div class="row"><span class="label">Club House</span><span class="value">12,000 sq.ft</span></div>
+                            <div class="row"><span class="label">Swimming Pool</span><span class="value">Yes (25m)</span></div>
+                            <div class="row"><span class="label">Gym</span><span class="value">State-of-the-art</span></div>
+                            <div class="row"><span class="label">Garden</span><span class="value">2 Acres</span></div>
+                        </div>
+                    </div>
+
+                    <div class="info-card" style="grid-column:1/-1;">
+                        <div class="card-title"><i class="fas fa-list-ul"></i> Amenities</div>
+                        <div class="card-body">
+                            <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                                <span class="badge-gold">Swimming Pool</span>
+                                <span class="badge-gold">Gym</span>
+                                <span class="badge-gold">Club House</span>
+                                <span class="badge-gold">Kids Play Area</span>
+                                <span class="badge-gold">Jogging Track</span>
+                                <span class="badge-gold">Tennis Court</span>
+                                <span class="badge-gold">Party Hall</span>
+                                <span class="badge-gold">24x7 Security</span>
+                                <span class="badge-gold">Power Backup</span>
+                                <span class="badge-gold">Rainwater Harvesting</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card" style="grid-column:1/-1;">
+                        <div class="card-title"><i class="fas fa-map"></i> Location &amp; Landmarks</div>
+                        <div class="card-body">
+                            <p><strong>Address:</strong> Wanwadi, Pune – 411040, Maharashtra.</p>
+                            <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;">
+                                <div><span class="label">Railway Station</span><br />Pune Junction – 5.2 km</div>
+                                <div><span class="label">Airport</span><br />Lohegaon – 12.4 km</div>
+                                <div><span class="label">Hospital</span><br />Ruby Hall – 3.8 km</div>
+                                <div><span class="label">School</span><br />Bishop's – 2.1 km</div>
+                                <div><span class="label">Market</span><br />MG Road – 4.0 km</div>
+                            </div>
+                            <div style="margin-top:14px;">
+                                <a href="#" class="btn btn-sm btn-outline" onclick="alert('Opening Google Maps…')"><i class="fas fa-map-marker-alt"></i> Open in Maps</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: DOCUMENTS
+        ========================================================== -->
+        <section class="page" id="page-documents" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Property Documents</h2>
+                    <p class="section-subtitle">All legal and statutory documents at your fingertips</p>
+                </div>
+
+                <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;">
+                    <span class="badge-gold"><i class="fas fa-file-pdf"></i> 14 Documents</span>
+                    <span class="badge-outline"><i class="fas fa-check-circle"></i> All Verified</span>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Document cards -->
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Sale Deed</div><div class="doc-meta">PDF · 2.4 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Sale Deed')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Sale Deed…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Agreement</div><div class="doc-meta">PDF · 1.8 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Agreement')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Agreement…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Possession Letter</div><div class="doc-meta">PDF · 1.2 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Possession Letter')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Possession Letter…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Occupancy Certificate</div><div class="doc-meta">PDF · 0.9 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: OC')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading OC…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Completion Certificate</div><div class="doc-meta">PDF · 1.1 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Completion Certificate')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Completion Certificate…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Approved Plan</div><div class="doc-meta">PDF · 3.2 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Approved Plan')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Approved Plan…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">NOC</div><div class="doc-meta">PDF · 0.7 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: NOC')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading NOC…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">RERA Certificate</div><div class="doc-meta">PDF · 0.8 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: RERA Certificate')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading RERA Certificate…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Property Tax</div><div class="doc-meta">PDF · 1.0 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Property Tax')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Property Tax…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: WARRANTY
+        ========================================================== -->
+        <section class="page" id="page-warranty" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Warranty &amp; After Sales</h2>
+                    <p class="section-subtitle">Every installed product with warranty details</p>
+                </div>
+
+                <div class="card-grid">
+                    <!-- Warranty Cards -->
+                    <div class="warranty-card">
+                        <div class="warranty-img" style="background:#e8f0e8;color:#2d6a2d;">🧱</div>
+                        <div class="warranty-name">Vitrified Tiles</div>
+                        <div class="warranty-brand">Kajaria · Premium Series</div>
+                        <div class="warranty-meta">
+                            <div><span class="meta-label">Warranty</span><br />5 Years</div>
+                            <div><span class="meta-label">Installed</span><br />10 Jan 2026</div>
+                            <div><span class="meta-label">Expires</span><br />10 Jan 2031</div>
+                            <div><span class="meta-label">Vendor</span><br />Raj Tiles</div>
+                        </div>
+                        <div class="warranty-actions">
+                            <button class="btn btn-gold" onclick="alert('Complaint logged for Tiles')"><i class="fas fa-exclamation-triangle"></i> Complaint</button>
+                            <button class="btn" onclick="alert('Warranty PDF: Tiles')"><i class="fas fa-file-pdf"></i> PDF</button>
+                            <button class="btn" onclick="alert('Calling vendor…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="warranty-card">
+                        <div class="warranty-img" style="background:#e8f0f8;color:#1a4a7a;">🚿</div>
+                        <div class="warranty-name">Sanitaryware</div>
+                        <div class="warranty-brand">Jaquar · Studio Collection</div>
+                        <div class="warranty-meta">
+                            <div><span class="meta-label">Warranty</span><br />7 Years</div>
+                            <div><span class="meta-label">Installed</span><br />15 Jan 2026</div>
+                            <div><span class="meta-label">Expires</span><br />15 Jan 2033</div>
+                            <div><span class="meta-label">Vendor</span><br />Jaquar World</div>
+                        </div>
+                        <div class="warranty-actions">
+                            <button class="btn btn-gold" onclick="alert('Complaint logged for Sanitaryware')"><i class="fas fa-exclamation-triangle"></i> Complaint</button>
+                            <button class="btn" onclick="alert('Warranty PDF: Sanitaryware')"><i class="fas fa-file-pdf"></i> PDF</button>
+                            <button class="btn" onclick="alert('Calling vendor…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="warranty-card">
+                        <div class="warranty-img" style="background:#f0f0e8;color:#8a6a3a;">💡</div>
+                        <div class="warranty-name">Electrical Switches</div>
+                        <div class="warranty-brand">Havells · Crabtree</div>
+                        <div class="warranty-meta">
+                            <div><span class="meta-label">Warranty</span><br />3 Years</div>
+                            <div><span class="meta-label">Installed</span><br />20 Jan 2026</div>
+                            <div><span class="meta-label">Expires</span><br />20 Jan 2029</div>
+                            <div><span class="meta-label">Vendor</span><br />Havells Store</div>
+                        </div>
+                        <div class="warranty-actions">
+                            <button class="btn btn-gold" onclick="alert('Complaint logged for Switches')"><i class="fas fa-exclamation-triangle"></i> Complaint</button>
+                            <button class="btn" onclick="alert('Warranty PDF: Switches')"><i class="fas fa-file-pdf"></i> PDF</button>
+                            <button class="btn" onclick="alert('Calling vendor…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="warranty-card">
+                        <div class="warranty-img" style="background:#f0e8f0;color:#6a3a7a;">⚡</div>
+                        <div class="warranty-name">MCB &amp; Distribution</div>
+                        <div class="warranty-brand">Schneider Electric</div>
+                        <div class="warranty-meta">
+                            <div><span class="meta-label">Warranty</span><br />5 Years</div>
+                            <div><span class="meta-label">Installed</span><br />22 Jan 2026</div>
+                            <div><span class="meta-label">Expires</span><br />22 Jan 2031</div>
+                            <div><span class="meta-label">Vendor</span><br />Schneider Hub</div>
+                        </div>
+                        <div class="warranty-actions">
+                            <button class="btn btn-gold" onclick="alert('Complaint logged for MCB')"><i class="fas fa-exclamation-triangle"></i> Complaint</button>
+                            <button class="btn" onclick="alert('Warranty PDF: MCB')"><i class="fas fa-file-pdf"></i> PDF</button>
+                            <button class="btn" onclick="alert('Calling vendor…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="warranty-card">
+                        <div class="warranty-img" style="background:#e8f0ee;color:#1a6a5a;">🌊</div>
+                        <div class="warranty-name">Water Pump</div>
+                        <div class="warranty-brand">Kirloskar · 1.5 HP</div>
+                        <div class="warranty-meta">
+                            <div><span class="meta-label">Warranty</span><br />3 Years</div>
+                            <div><span class="meta-label">Installed</span><br />25 Jan 2026</div>
+                            <div><span class="meta-label">Expires</span><br />25 Jan 2029</div>
+                            <div><span class="meta-label">Vendor</span><br />Kirloskar Pumps</div>
+                        </div>
+                        <div class="warranty-actions">
+                            <button class="btn btn-gold" onclick="alert('Complaint logged for Pump')"><i class="fas fa-exclamation-triangle"></i> Complaint</button>
+                            <button class="btn" onclick="alert('Warranty PDF: Pump')"><i class="fas fa-file-pdf"></i> PDF</button>
+                            <button class="btn" onclick="alert('Calling vendor…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="warranty-card">
+                        <div class="warranty-img" style="background:#f0ece8;color:#7a5a3a;">🛗</div>
+                        <div class="warranty-name">Lift / Elevator</div>
+                        <div class="warranty-brand">Schindler · 13 Passenger</div>
+                        <div class="warranty-meta">
+                            <div><span class="meta-label">Warranty</span><br />10 Years</div>
+                            <div><span class="meta-label">Installed</span><br />01 Feb 2026</div>
+                            <div><span class="meta-label">Expires</span><br />01 Feb 2036</div>
+                            <div><span class="meta-label">Vendor</span><br />Schindler India</div>
+                        </div>
+                        <div class="warranty-actions">
+                            <button class="btn btn-gold" onclick="alert('Complaint logged for Lift')"><i class="fas fa-exclamation-triangle"></i> Complaint</button>
+                            <button class="btn" onclick="alert('Warranty PDF: Lift')"><i class="fas fa-file-pdf"></i> PDF</button>
+                            <button class="btn" onclick="alert('Calling vendor…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: SERVICES
+        ========================================================== -->
+        <section class="page" id="page-services" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">One Click Service Request</h2>
+                    <p class="section-subtitle">Tap any service to log a request instantly</p>
+                </div>
+
+                <div class="service-grid">
+                    <div class="service-item" onclick="alert('Service Request: Plumbing')"><span class="service-icon">🔧</span><span class="service-label">Plumbing</span></div>
+                    <div class="service-item" onclick="alert('Service Request: Electrical')"><span class="service-icon">⚡</span><span class="service-label">Electrical</span></div>
+                    <div class="service-item" onclick="alert('Service Request: Carpenter')"><span class="service-icon">🪚</span><span class="service-label">Carpenter</span></div>
+                    <div class="service-item" onclick="alert('Service Request: Painter')"><span class="service-icon">🎨</span><span class="service-label">Painter</span></div>
+                    <div class="service-item" onclick="alert('Service Request: Lift')"><span class="service-icon">🛗</span><span class="service-label">Lift</span></div>
+                    <div class="service-item" onclick="alert('Service Request: Water Leakage')"><span class="service-icon">💧</span><span class="service-label">Water Leakage</span></div>
+                    <div class="service-item" onclick="alert('Service Request: AC Service')"><span class="service-icon">❄️</span><span class="service-label">AC Service</span></div>
+                    <div class="service-item" onclick="alert('Service Request: Housekeeping')"><span class="service-icon">🧹</span><span class="service-label">Housekeeping</span></div>
+                    <div class="service-item" onclick="alert('Service Request: Garden')"><span class="service-icon">🌿</span><span class="service-label">Garden</span></div>
+                    <div class="service-item" onclick="alert('Service Request: Security')"><span class="service-icon">🛡️</span><span class="service-label">Security</span></div>
+                    <div class="service-item" onclick="alert('Service Request: Pest Control')"><span class="service-icon">🐜</span><span class="service-label">Pest Control</span></div>
+                    <div class="service-item" onclick="alert('Service Request: General Complaint')"><span class="service-icon">📋</span><span class="service-label">Complaint</span></div>
+                </div>
+
+                <!-- Complaint Form -->
+                <div style="margin-top:32px;background:var(--white);border-radius:var(--radius-md);padding:24px;border:1px solid var(--gray-100);box-shadow:var(--shadow-sm);">
+                    <h4 style="font-weight:600;margin-bottom:12px;"><i class="fas fa-pen gold-accent"></i> File a Complaint</h4>
+                    <form onsubmit="alert('Complaint submitted! Tracking ID: SR-2026-0042');return false;">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                            <input type="text" placeholder="Your Name" style="padding:12px 16px;border-radius:var(--radius-sm);border:1px solid var(--gray-200);font-family:var(--font-sans);font-size:0.95rem;grid-column:1/-1;" required />
+                            <input type="text" placeholder="Flat No." style="padding:12px 16px;border-radius:var(--radius-sm);border:1px solid var(--gray-200);font-family:var(--font-sans);font-size:0.95rem;" />
+                            <input type="tel" placeholder="Mobile Number" style="padding:12px 16px;border-radius:var(--radius-sm);border:1px solid var(--gray-200);font-family:var(--font-sans);font-size:0.95rem;" />
+                            <select style="padding:12px 16px;border-radius:var(--radius-sm);border:1px solid var(--gray-200);font-family:var(--font-sans);font-size:0.95rem;grid-column:1/-1;">
+                                <option>Select Service Type</option>
+                                <option>Plumbing</option><option>Electrical</option><option>Carpenter</option>
+                                <option>Painter</option><option>Lift</option><option>Water Leakage</option>
+                                <option>AC Service</option><option>Housekeeping</option><option>Other</option>
+                            </select>
+                            <textarea placeholder="Describe your issue in detail…" style="padding:12px 16px;border-radius:var(--radius-sm);border:1px solid var(--gray-200);font-family:var(--font-sans);font-size:0.95rem;min-height:100px;grid-column:1/-1;resize:vertical;"></textarea>
+                            <div style="grid-column:1/-1;display:flex;gap:12px;flex-wrap:wrap;">
+                                <button type="button" class="btn btn-outline btn-sm" onclick="alert('Photo upload dialog opened.')"><i class="fas fa-camera"></i> Upload Photo</button>
+                                <button type="submit" class="btn btn-gold"><i class="fas fa-paper-plane"></i> Submit Request</button>
+                            </div>
+                        </div>
+                    </form>
+                    <div style="margin-top:16px;padding:12px 16px;background:var(--gray-50);border-radius:var(--radius-sm);font-size:0.9rem;color:var(--gray-500);">
+                        <i class="fas fa-clock" style="color:var(--gold);margin-right:8px;"></i>
+                        Track Complaint: <strong>SR-2026-0042</strong> · Status: <span style="color:var(--gold);font-weight:600;">In Progress</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: BANK
+        ========================================================== -->
+        <section class="page" id="page-bank" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Bank Loan Module</h2>
+                    <p class="section-subtitle">Partner banks &amp; financial tools</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="bank-card">
+                        <div class="bank-rep">
+                            <div class="rep-avatar"><i class="fas fa-user-circle"></i></div>
+                            <div><div class="rep-name">Mr. Anil Sharma</div><div class="rep-role">HDFC Bank · Relationship Manager</div></div>
+                        </div>
+                        <div style="font-size:0.9rem;color:var(--gray-600);">📞 +91 98765 43210 &middot; 📧 anil.sharma@hdfc.com</div>
+                        <div style="font-size:0.85rem;color:var(--gray-500);"><i class="fas fa-map-pin"></i> HDFC Bank, Wanwadi Branch</div>
+                        <div class="bank-actions">
+                            <button class="btn" onclick="alert('Calling Anil Sharma…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                            <button class="btn btn-gold" onclick="alert('Loan application form opened.')"><i class="fas fa-hand-holding-usd"></i> Apply Loan</button>
+                        </div>
+                    </div>
+
+                    <div class="bank-card">
+                        <div class="bank-rep">
+                            <div class="rep-avatar"><i class="fas fa-user-circle"></i></div>
+                            <div><div class="rep-name">Ms. Priya Patel</div><div class="rep-role">ICICI Bank · Home Loan Specialist</div></div>
+                        </div>
+                        <div style="font-size:0.9rem;color:var(--gray-600);">📞 +91 98220 56789 &middot; 📧 priya.p@icici.com</div>
+                        <div style="font-size:0.85rem;color:var(--gray-500);"><i class="fas fa-map-pin"></i> ICICI Bank, Wanwadi Road</div>
+                        <div class="bank-actions">
+                            <button class="btn" onclick="alert('Calling Priya Patel…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                            <button class="btn btn-gold" onclick="alert('Loan application form opened.')"><i class="fas fa-hand-holding-usd"></i> Apply Loan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calculators -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;">
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-calculator"></i> EMI Calculator</div>
+                        <div class="card-body">
+                            <div style="display:grid;gap:10px;">
+                                <div><label style="font-weight:500;font-size:0.85rem;">Loan Amount (₹)</label><input type="number" value="5000000" style="width:100%;padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--gray-200);font-family:var(--font-sans);font-size:0.95rem;" /></div>
+                                <div><label style="font-weight:500;font-size:0.85rem;">Rate (% p.a.)</label><input type="number" value="8.5" style="width:100%;padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--gray-200);font-family:var(--font-sans);font-size:0.95rem;" /></div>
+                                <div><label style="font-weight:500;font-size:0.85rem;">Tenure (Years)</label><input type="number" value="20" style="width:100%;padding:10px 14px;border-radius:var(--radius-sm);border:1px solid var(--gray-200);font-family:var(--font-sans);font-size:0.95rem;" /></div>
+                                <button class="btn btn-gold" onclick="alert('EMI: ₹43,391 / month')"><i class="fas fa-calculator"></i> Calculate EMI</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-check-circle"></i> Eligibility &amp; Tools</div>
+                        <div class="card-body">
+                            <button class="btn btn-outline w-full" style="justify-content:center;margin-bottom:10px;" onclick="alert('You are eligible for up to ₹75,00,000')"><i class="fas fa-user-check"></i> Check Eligibility</button>
+                            <button class="btn btn-outline w-full" style="justify-content:center;margin-bottom:10px;" onclick="alert('Balance transfer form opened.')"><i class="fas fa-exchange-alt"></i> Balance Transfer</button>
+                            <button class="btn btn-outline w-full" style="justify-content:center;margin-bottom:10px;" onclick="alert('Top-up loan form opened.')"><i class="fas fa-plus-circle"></i> Top Up Loan</button>
+                            <button class="btn btn-outline w-full" style="justify-content:center;" onclick="alert('Loan status: Under Processing')"><i class="fas fa-chart-line"></i> Loan Status</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: EMERGENCY
+        ========================================================== -->
+        <section class="page" id="page-emergency" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Emergency Numbers</h2>
+                    <p class="section-subtitle">24x7 helpline &amp; critical contacts</p>
+                </div>
+
+                <div class="emergency-grid">
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-police" style="color:var(--gold);margin-right:6px;"></i> Police</div><div class="emergency-number">100</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Police…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-fire" style="color:var(--gold);margin-right:6px;"></i> Fire Brigade</div><div class="emergency-number">101</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Fire Brigade…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-ambulance" style="color:var(--gold);margin-right:6px;"></i> Ambulance</div><div class="emergency-number">108</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Ambulance…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-hospital" style="color:var(--gold);margin-right:6px;"></i> Ruby Hall Hospital</div><div class="emergency-number">020 2612 3456</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Hospital…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-bolt" style="color:var(--gold);margin-right:6px;"></i> Electric Dept.</div><div class="emergency-number">1912</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Electric Dept…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-water" style="color:var(--gold);margin-right:6px;"></i> Water Dept.</div><div class="emergency-number">1916</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Water Dept…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-gas-pump" style="color:var(--gold);margin-right:6px;"></i> Gas Agency</div><div class="emergency-number">1800 123 456</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Gas Agency…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-building" style="color:var(--gold);margin-right:6px;"></i> Society Office</div><div class="emergency-number">020 2612 7890</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Society Office…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-shield-alt" style="color:var(--gold);margin-right:6px;"></i> Security Gate</div><div class="emergency-number">020 2612 7891</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Security…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-elevator" style="color:var(--gold);margin-right:6px;"></i> Lift Emergency</div><div class="emergency-number">1800 200 333</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Lift Emergency…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-hard-hat" style="color:var(--gold);margin-right:6px;"></i> Builder Emergency</div><div class="emergency-number">+91 98220 12345</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Builder Emergency…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-headset" style="color:var(--gold);margin-right:6px;"></i> 24x7 Helpline</div><div class="emergency-number">1800 123 8888</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Helpline…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: NOTICE
+        ========================================================== -->
+        <section class="page" id="page-notice" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Notice Board</h2>
+                    <p class="section-subtitle">Builder &amp; society announcements</p>
+                </div>
+
+                <div class="notice-item">
+                    <div class="notice-title"><span class="badge">Builder</span> Annual Maintenance Schedule</div>
+                    <div class="notice-meta"><i class="far fa-calendar-alt"></i> 28 Jun 2026 &middot; <i class="far fa-clock"></i> 10:00 AM</div>
+                    <div class="notice-body">Annual maintenance of all common areas will begin from 1st July. Water tanks, generators, and fire systems will be inspected. Please cooperate.</div>
+                </div>
+
+                <div class="notice-item">
+                    <div class="notice-title"><span class="badge" style="background:var(--gray-300);color:var(--navy);">Society</span> Water Shutdown Notice</div>
+                    <div class="notice-meta"><i class="far fa-calendar-alt"></i> 30 Jun 2026 &middot; <i class="far fa-clock"></i> 8:00 AM – 2:00 PM</div>
+                    <div class="notice-body">Water supply will be shut down for 6 hours on 30th June for pipeline maintenance. Please store adequate water in advance.</div>
+                </div>
+
+                <div class="notice-item">
+                    <div class="notice-title"><span class="badge" style="background:var(--gray-300);color:var(--navy);">Society</span> Power Shutdown – Transformer Maintenance</div>
+                    <div class="notice-meta"><i class="far fa-calendar-alt"></i> 2 Jul 2026 &middot; <i class="far fa-clock"></i> 9:00 AM – 1:00 PM</div>
+                    <div class="notice-body">MSEDCL has scheduled a power shutdown for transformer maintenance. Backup generators will be operational for common areas.</div>
+                </div>
+
+                <div class="notice-item">
+                    <div class="notice-title"><span class="badge">Builder</span> Ganesh Festival Celebration</div>
+                    <div class="notice-meta"><i class="far fa-calendar-alt"></i> 7 Sep 2026 &middot; <i class="far fa-clock"></i> 6:00 PM</div>
+                    <div class="notice-body">Join us for the Ganesh Festival celebration in the club house. All residents are invited. Cultural programs and dinner will be arranged.</div>
+                </div>
+
+                <div class="notice-item">
+                    <div class="notice-title"><span class="badge" style="background:var(--gray-300);color:var(--navy);">Society</span> Annual General Meeting (AGM)</div>
+                    <div class="notice-meta"><i class="far fa-calendar-alt"></i> 15 Aug 2026 &middot; <i class="far fa-clock"></i> 11:00 AM</div>
+                    <div class="notice-body">The Annual General Meeting of the society will be held on 15th August. Agenda includes budget approval, new committee elections, and maintenance updates.</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: GALLERY
+        ========================================================== -->
+        <section class="page" id="page-gallery" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Gallery</h2>
+                    <p class="section-subtitle">Building, amenities &amp; community spaces</p>
+                </div>
+
+                <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
+                    <span class="badge-gold"><i class="fas fa-image"></i> Photos</span>
+                    <span class="badge-outline"><i class="fas fa-video"></i> Videos</span>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item" style="background:#e8f0e8;color:#2d6a2d;font-size:2rem;">🏢</div>
+                    <div class="gallery-item" style="background:#e8f0f8;color:#1a4a7a;font-size:2rem;">🌳</div>
+                    <div class="gallery-item" style="background:#f0e8f0;color:#6a3a7a;font-size:2rem;">🏊</div>
+                    <div class="gallery-item" style="background:#f0ece8;color:#7a5a3a;font-size:2rem;">🏋️</div>
+                    <div class="gallery-item" style="background:#e8f0ee;color:#1a6a5a;font-size:2rem;">🌿</div>
+                    <div class="gallery-item" style="background:#f0e8e0;color:#8a5a3a;font-size:2rem;">🅿️</div>
+                    <div class="gallery-item" style="background:#e8e8f0;color:#4a4a7a;font-size:2rem;">🎾</div>
+                    <div class="gallery-item" style="background:#f0f0e8;color:#8a6a3a;font-size:2rem;">🏸</div>
+                    <div class="gallery-item" style="background:#e8f0f0;color:#1a6a6a;font-size:2rem;">🎤</div>
+                    <div class="gallery-item" style="background:#f0ece8;color:#7a5a3a;font-size:2rem;">🪴</div>
+                    <div class="gallery-item" style="background:#e8e8f0;color:#4a4a7a;font-size:2rem;">🏰</div>
+                    <div class="gallery-item" style="background:#f0e8f0;color:#6a3a7a;font-size:2rem;">🎬</div>
+                </div>
+
+                <div style="margin-top:24px;padding:16px 20px;background:var(--gray-50);border-radius:var(--radius-sm);display:flex;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid var(--gray-100);">
+                    <i class="fas fa-video" style="color:var(--gold);font-size:1.4rem;"></i>
+                    <span style="font-weight:500;">Videos:</span>
+                    <span class="badge-outline" style="cursor:pointer;" onclick="alert('Playing: Project Walkthrough')">Project Walkthrough</span>
+                    <span class="badge-outline" style="cursor:pointer;" onclick="alert('Playing: Club House Tour')">Club House Tour</span>
+                    <span class="badge-outline" style="cursor:pointer;" onclick="alert('Playing: Garden & Pool')">Garden &amp; Pool</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: FEEDBACK
+        ========================================================== -->
+        <section class="page" id="page-feedback" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Feedback</h2>
+                    <p class="section-subtitle">Rate your experience &amp; share suggestions</p>
+                </div>
+
+                <div class="info-card" style="max-width:600px;margin:0 auto;">
+                    <div class="card-title"><i class="fas fa-star"></i> Rate Your Experience</div>
+                    <div class="card-body">
+                        <div class="feedback-stars" id="starRating">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        <form class="feedback-form" onsubmit="alert('Thank you for your feedback! We value your input.');return false;">
+                            <textarea placeholder="Share your suggestions, complaints, or any feedback…" required></textarea>
+                            <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;">
+                                <button type="submit" class="btn btn-gold"><i class="fas fa-paper-plane"></i> Submit Feedback</button>
+                                <button type="button" class="btn btn-outline" onclick="alert('Contact builder: +91 98220 12345')"><i class="fas fa-building"></i> Contact Builder</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: DOWNLOADS
+        ========================================================== -->
+        <section class="page" id="page-downloads" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Download Center</h2>
+                    <p class="section-subtitle">All documents available for download</p>
+                </div>
+
+                <div class="card-grid">
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Sale Deed</div><div class="doc-meta">PDF · 2.4 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading Sale Deed…')"><i class="fas fa-download"></i> Download</button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Agreement</div><div class="doc-meta">PDF · 1.8 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading Agreement…')"><i class="fas fa-download"></i> Download</button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Possession Letter</div><div class="doc-meta">PDF · 1.2 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading Possession Letter…')"><i class="fas fa-download"></i> Download</button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Occupancy Certificate</div><div class="doc-meta">PDF · 0.9 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading OC…')"><i class="fas fa-download"></i> Download</button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">RERA Certificate</div><div class="doc-meta">PDF · 0.8 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading RERA Certificate…')"><i class="fas fa-download"></i> Download</button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Warranty Summary</div><div class="doc-meta">PDF · 1.6 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading Warranty Summary…')"><i class="fas fa-download"></i> Download</button></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================================
+        PAGE: SUPPORT
+        ========================================================== -->
+        <section class="page" id="page-support" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Customer Support</h2>
+                    <p class="section-subtitle">We're here to help 24x7</p>
+                </div>
+
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;">
+                    <div class="info-card" style="text-align:center;">
+                        <div style="font-size:2.8rem;color:var(--gold);margin-bottom:8px;"><i class="fas fa-headset"></i></div>
+                        <div style="font-weight:600;font-size:1.1rem;">Live Chat</div>
+                        <div style="font-size:0.85rem;color:var(--gray-500);margin:4px 0 12px;">Available 24x7</div>
+                        <button class="btn btn-gold w-full" onclick="alert('Live chat started…')"><i class="fas fa-comment-dots"></i> Start Chat</button>
+                    </div>
+
+                    <div class="info-card" style="text-align:center;">
+                        <div style="font-size:2.8rem;color:var(--gold);margin-bottom:8px;"><i class="fab fa-whatsapp"></i></div>
+                        <div style="font-weight:600;font-size:1.1rem;">WhatsApp</div>
+                        <div style="font-size:0.85rem;color:var(--gray-500);margin:4px 0 12px;">+91 98765 43210</div>
+                        <button class="btn btn-outline w-full" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i> Message</button>
+                    </div>
+
+                    <div class="info-card" style="text-align:center;">
+                        <div style="font-size:2.8rem;color:var(--gold);margin-bottom:8px;"><i class="fas fa-phone"></i></div>
+                        <div style="font-weight:600;font-size:1.1rem;">Call Us</div>
+                        <div style="font-size:0.85rem;color:var(--gray-500);margin:4px 0 12px;">+91 98220 12345</div>
+                        <button class="btn btn-outline w-full" onclick="alert('Calling support…')"><i class="fas fa-phone"></i> Call Now</button>
+                    </div>
+
+                    <div class="info-card" style="text-align:center;">
+                        <div style="font-size:2.8rem;color:var(--gold);margin-bottom:8px;"><i class="fas fa-envelope"></i></div>
+                        <div style="font-weight:600;font-size:1.1rem;">Email</div>
+                        <div style="font-size:0.85rem;color:var(--gray-500);margin:4px 0 12px;">support@ishananad.com</div>
+                        <button class="btn btn-outline w-full" onclick="alert('Opening email…')"><i class="fas fa-envelope"></i> Send Email</button>
+                    </div>
+                </div>
+
+                <div style="margin-top:32px;padding:20px 24px;background:var(--gray-50);border-radius:var(--radius-md);border:1px solid var(--gray-100);text-align:center;">
+                    <p style="color:var(--gray-500);font-size:0.9rem;">
+                        <i class="fas fa-clock" style="color:var(--gold);margin-right:8px;"></i>
+                        Support Hours: 24x7 &middot; Emergency: +91 98220 12345
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ==========================================================
+    AI FLOATING BUTTON
+    ========================================================== -->
+    <button class="ai-fab" id="aiFab" aria-label="AI Assistant" title="AI Assistant">
+        <span class="pulse"></span>
+        <i class="fas fa-robot"></i>
+    </button>
+
+    <!-- ==========================================================
+    AI CHAT MODAL
+    ========================================================== -->
+    <div class="ai-modal" id="aiModal">
+        <div class="ai-header">
+            <h4><i class="fas fa-robot"></i> AI Assistant</h4>
+            <button class="close-ai" id="closeAi"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="ai-messages" id="aiMessages">
+            <div class="msg bot">Hello! I'm your Digital Passport AI. Ask me anything about your property, documents, warranty, or contacts.</div>
+        </div>
+        <div class="ai-input">
+            <input type="text" id="aiInput" placeholder="Ask me anything…" />
+            <button id="aiSend"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- ==========================================================
+    JAVASCRIPT — APP.JS
+    ========================================================== -->
+    <script>
+        /* ==========================================================
+               APP — MODULAR JAVASCRIPT
+               ========================================================== */
+
+        (function() {
+            'use strict';
+
+            // ----- DOM REFS -----
+            const pages = document.querySelectorAll('.page');
+            const navLinks = document.querySelectorAll('[data-page]');
+            const mobileNav = document.getElementById('mobileNav');
+            const navOverlay = document.getElementById('navOverlay');
+            const navToggle = document.getElementById('navToggle');
+            const closeMobileNav = document.getElementById('closeMobileNav');
+            const darkToggle = document.getElementById('darkModeToggle');
+            const aiFab = document.getElementById('aiFab');
+            const aiModal = document.getElementById('aiModal');
+            const closeAi = document.getElementById('closeAi');
+            const aiSend = document.getElementById('aiSend');
+            const aiInput = document.getElementById('aiInput');
+            const aiMessages = document.getElementById('aiMessages');
+            const header = document.getElementById('appHeader');
+
+            let currentPage = 'home';
+            let isDark = false;
+            let aiOpen = false;
+
+            // ----- PAGE NAVIGATION -----
+            function navigateTo(pageId) {
+                // Hide all pages
+                pages.forEach(p => p.classList.remove('active'));
+
+                // Show target
+                const target = document.getElementById('page-' + pageId);
+                if (target) {
+                    target.classList.add('active');
+                    // Scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+
+                // Update nav links
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.dataset.page === pageId) {
+                        link.classList.add('active');
+                    }
+                });
+
+                currentPage = pageId;
+
+                // Close mobile nav
+                closeMobileNavFn();
+
+                // Update URL hash
+                if (pageId !== 'home') {
+                    history.pushState(null, '', '#' + pageId);
+                } else {
+                    history.pushState(null, '', '#');
+                }
+            }
+
+            // ----- CLOSE MOBILE NAV -----
+            function closeMobileNavFn() {
+                mobileNav.classList.remove('open');
+                navOverlay.classList.remove('open');
+                navToggle.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            }
+
+            // ----- TOGGLE MOBILE NAV -----
+            function toggleMobileNav() {
+                const isOpen = mobileNav.classList.contains('open');
+                if (isOpen) {
+                    closeMobileNavFn();
+                } else {
+                    mobileNav.classList.add('open');
+                    navOverlay.classList.add('open');
+                    navToggle.classList.add('active');
+                    navToggle.setAttribute('aria-expanded', 'true');
+                }
+            }
+
+            // ----- DARK MODE -----
+            function toggleDarkMode() {
+                isDark = !isDark;
+                document.body.classList.toggle('dark-mode', isDark);
+                darkToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                localStorage.setItem('dpp-dark', isDark ? 'true' : 'false');
+            }
+
+            // ----- AI CHAT -----
+            function toggleAi() {
+                aiOpen = !aiOpen;
+                aiModal.classList.toggle('open', aiOpen);
+                if (aiOpen) {
+                    aiInput.focus();
+                }
+            }
+
+            function sendAiMessage() {
+                const text = aiInput.value.trim();
+                if (!text) return;
+
+                // Add user message
+                const userMsg = document.createElement('div');
+                userMsg.className = 'msg user';
+                userMsg.textContent = text;
+                aiMessages.appendChild(userMsg);
+
+                aiInput.value = '';
+                aiMessages.scrollTop = aiMessages.scrollHeight;
+
+                // Simulate AI response
+                setTimeout(() => {
+                    const botMsg = document.createElement('div');
+                    botMsg.className = 'msg bot';
+                    const responses = [
+                        'I can help you with that! Your Sale Deed is available in the Documents section.',
+                        'The Occupancy Certificate (OC) is ready. Check Documents → Occupancy Certificate.',
+                        'Warranty details: All products have active warranties. Check the Warranty section for full details.',
+                        'Builder contact: Makwana Brows and Co. — +91 98220 12345',
+                        'Emergency numbers are available in the Emergency section. Police: 100, Fire: 101, Ambulance: 108.',
+                        'Property information: Ishananad, Tower A, Wing East, Flat A-1202. Possession: 15 Dec 2026.'
+                    ];
+                    botMsg.textContent = responses[Math.floor(Math.random() * responses.length)];
+                    aiMessages.appendChild(botMsg);
+                    aiMessages.scrollTop = aiMessages.scrollHeight;
+                }, 600);
+            }
+
+            // ----- HEADER SCROLL EFFECT -----
+            function handleScroll() {
+                if (window.scrollY > 20) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+
+            // ----- STAR RATING (Feedback) -----
+            function initStars() {
+                const stars = document.querySelectorAll('.feedback-stars .star');
+                let selected = 0;
+
+                stars.forEach(star => {
+                    star.addEventListener('click', function() {
+                        selected = parseInt(this.dataset.value);
+                        stars.forEach(s => {
+                            s.classList.toggle('active', parseInt(s.dataset.value) <= selected);
+                        });
+                    });
+
+                    star.addEventListener('mouseenter', function() {
+                        const val = parseInt(this.dataset.value);
+                        stars.forEach(s => {
+                            s.style.color = parseInt(s.dataset.value) <= val ? 'var(--gold)' : 'var(--gray-300)';
+                        });
+                    });
+
+                    star.addEventListener('mouseleave', function() {
+                        stars.forEach(s => {
+                            s.style.color = s.classList.contains('active') ? 'var(--gold)' : 'var(--gray-300)';
+                        });
+                    });
+                });
+            }
+
+            // ----- HASH ROUTING -----
+            function routeFromHash() {
+                const hash = window.location.hash.replace('#', '');
+                if (hash && document.getElementById('page-' + hash)) {
+                    navigateTo(hash);
+                } else {
+                    navigateTo('home');
+                }
+            }
+
+            // ----- EVENT BINDING -----
+            // Nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.dataset.page;
+                    if (page) navigateTo(page);
+                });
+            });
+
+            // Mobile nav toggle
+            navToggle.addEventListener('click', toggleMobileNav);
+            closeMobileNav.addEventListener('click', closeMobileNavFn);
+            navOverlay.addEventListener('click', closeMobileNavFn);
+
+            // Dark mode
+            darkToggle.addEventListener('click', toggleDarkMode);
+
+            // AI
+            aiFab.addEventListener('click', toggleAi);
+            closeAi.addEventListener('click', toggleAi);
+            aiSend.addEventListener('click', sendAiMessage);
+            aiInput.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter') sendAiMessage();
+            });
+
+            // Scroll
+            window.addEventListener('scroll', handleScroll);
+
+            // Hash change
+            window.addEventListener('hashchange', routeFromHash);
+
+            // ----- INIT -----
+            function init() {
+                // Restore dark mode
+                const savedDark = localStorage.getItem('dpp-dark');
+                if (savedDark === 'true') {
+                    isDark = true;
+                    document.body.classList.add('dark-mode');
+                    darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                }
+
+                // Route from hash
+                routeFromHash();
+
+                // Init star rating
+                initStars();
+
+                // Header initial state
+                handleScroll();
+
+                console.log('🏠 Digital Property Passport · Ishananad');
+                console.log('📦 v1.0 · Premium Enterprise Platform');
+            }
+
+            // Expose navigate for inline use
+            window.navigateTo = navigateTo;
+
+            // Go
+            init();
+
+        })();
+    </script>
+
+</body>
+</html>

@@ -143,7 +143,7 @@
         }
 
         /* ==========================================================
-               BUTTONS (Larger, more premium)
+               BUTTONS
                ========================================================== */
         .btn {
             display: inline-flex;
@@ -213,6 +213,14 @@
             align-items: center;
             justify-content: center;
             font-size: 1.2rem;
+        }
+
+        /* Active state for nav buttons */
+        .btn.active-btn {
+            background: var(--gold) !important;
+            color: var(--navy) !important;
+            border-color: var(--gold) !important;
+            box-shadow: 0 4px 20px rgba(201, 168, 76, 0.30);
         }
 
         /* ==========================================================
@@ -796,46 +804,79 @@
         }
 
         /* ==========================================================
-               SERVICE REQUEST ICONS
+               SERVICE REQUEST — NEW DESIGN
                ========================================================== */
-        .service-grid {
+        .service-detail-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
         }
 
-        .service-item {
+        .service-detail-card {
             background: var(--white);
             border-radius: var(--radius-md);
-            padding: 20px 12px;
-            text-align: center;
+            padding: 20px;
             border: 1px solid var(--gray-100);
-            transition: all var(--transition);
-            cursor: pointer;
             box-shadow: var(--shadow-sm);
+            transition: all var(--transition);
         }
 
-        .service-item:hover {
-            transform: translateY(-4px);
+        .service-detail-card:hover {
             box-shadow: var(--shadow-md);
-            border-color: var(--gold);
+            transform: translateY(-4px);
+            border-color: rgba(201, 168, 76, 0.15);
         }
 
-        .service-item .service-icon {
-            font-size: 2rem;
+        .service-detail-card .service-icon {
+            font-size: 2.2rem;
             color: var(--gold);
             margin-bottom: 8px;
-            display: block;
         }
 
-        .service-item .service-label {
-            font-weight: 500;
-            font-size: 0.8rem;
+        .service-detail-card .service-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+
+        .service-detail-card .service-detail {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+
+        .service-detail-card .service-detail .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 4px 0;
+            border-bottom: 1px solid var(--gray-100);
+        }
+        .service-detail-card .service-detail .row:last-child {
+            border-bottom: none;
+        }
+
+        .service-detail-card .service-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+        .service-detail-card .service-actions .btn {
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            border-radius: 30px;
+            background: var(--gray-50);
             color: var(--navy);
+            border: 1px solid var(--gray-200);
+            box-shadow: none;
+        }
+        .service-detail-card .service-actions .btn:hover {
+            border-color: var(--gold);
+            background: var(--white);
         }
 
         /* ==========================================================
-               EMERGENCY
+               EMERGENCY — highlighted
                ========================================================== */
         .emergency-grid {
             display: grid;
@@ -891,8 +932,18 @@
             background: var(--white);
         }
 
+        /* Highlight specific emergency items */
+        .emergency-item.highlight {
+            border-left-color: #d32f2f;
+            background: #fff5f5;
+        }
+        .emergency-item.highlight .emergency-name {
+            color: #d32f2f;
+            font-weight: 700;
+        }
+
         /* ==========================================================
-               GALLERY
+               GALLERY — small buttons
                ========================================================== */
         .gallery-grid {
             display: grid;
@@ -921,8 +972,24 @@
             border-color: var(--gold);
         }
 
+        .gallery-video-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            font-size: 0.7rem;
+            border-radius: 60px;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            border: 1px solid var(--gray-200);
+            cursor: pointer;
+            transition: all var(--transition);
+        }
+        .gallery-video-badge:hover {
+            border-color: var(--gold);
+            background: var(--white);
+        }
+
         /* ==========================================================
-               BANK / EMI
+               BANK — removed Eligibility & Tools card
                ========================================================== */
         .bank-card {
             background: var(--white);
@@ -1238,8 +1305,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .service-grid {
-                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            .service-detail-grid {
+                grid-template-columns: 1fr;
             }
 
             .emergency-grid {
@@ -1305,8 +1372,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .service-grid {
-                grid-template-columns: repeat(3, 1fr);
+            .service-detail-grid {
+                grid-template-columns: 1fr;
             }
 
             .hero-banner h1 {
@@ -1317,16 +1384,6 @@
                 min-width: 80px;
                 padding: 10px 14px;
                 font-size: 0.8rem;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .mobile-nav,
-            .nav-overlay {
-                display: none !important;
-            }
-            .nav-toggle {
-                display: none !important;
             }
         }
 
@@ -1438,8 +1495,8 @@
                             <strong>Makwana Brows and Co.</strong> &middot; Wanwadi, Pune
                         </div>
                         <div class="hero-actions">
-                            <a href="#" class="btn btn-gold" data-page="upcoming"><i class="fas fa-rocket"></i> Upcoming Projects</a>
-                            <a href="#" class="btn" data-page="our-projects"><i class="fas fa-building"></i> Our Projects</a>
+                            <!-- Only "Our Projects" -->
+                            <a href="#" class="btn btn-gold" data-page="our-projects"><i class="fas fa-building"></i> Our Projects</a>
                         </div>
                     </div>
                 </div>
@@ -1473,20 +1530,15 @@
                         <div class="dash-label">Builder</div>
                         <div class="dash-count">Info</div>
                     </a>
-                    <a href="#" class="dash-card" data-page="upcoming">
-                        <div class="dash-icon"><i class="fas fa-rocket"></i></div>
-                        <div class="dash-label">Upcoming</div>
-                        <div class="dash-count">Projects</div>
-                    </a>
                     <a href="#" class="dash-card" data-page="our-projects">
                         <div class="dash-icon"><i class="fas fa-building"></i></div>
-                        <div class="dash-label">Our Projects</div>
-                        <div class="dash-count">Completed</div>
+                        <div class="dash-label">Projects</div>
+                        <div class="dash-count">All</div>
                     </a>
                     <a href="#" class="dash-card" data-page="services">
                         <div class="dash-icon"><i class="fas fa-tools"></i></div>
                         <div class="dash-label">Services</div>
-                        <div class="dash-count">Request</div>
+                        <div class="dash-count">Details</div>
                     </a>
                     <a href="#" class="dash-card" data-page="bank">
                         <div class="dash-icon"><i class="fas fa-university"></i></div>
@@ -1496,7 +1548,7 @@
                     <a href="#" class="dash-card" data-page="emergency">
                         <div class="dash-icon"><i class="fas fa-phone-alt"></i></div>
                         <div class="dash-label">Emergency</div>
-                        <div class="dash-count">12</div>
+                        <div class="dash-count">Help</div>
                     </a>
                     <a href="#" class="dash-card" data-page="gallery">
                         <div class="dash-icon"><i class="fas fa-images"></i></div>
@@ -1584,54 +1636,18 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: UPCOMING PROJECTS
-        ========================================================== -->
-        <section class="page" id="page-upcoming" role="tabpanel">
-            <div class="container section-padding">
-                <div class="page-header">
-                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
-                    <h2 class="section-title">Upcoming Projects</h2>
-                    <p class="section-subtitle">Discover our future landmarks by Makwana Brows and Co.</p>
-                </div>
-
-                <div class="card-grid">
-                    <div class="info-card">
-                        <div class="card-title"><i class="fas fa-drafting-compass"></i> Serenity Hills</div>
-                        <div class="card-body">
-                            <div class="row"><span class="label">Status</span><span class="value"><span class="badge-gold" style="font-size:0.65rem;">Upcoming</span></span></div>
-                            <div class="row"><span class="label">Location</span><span class="value">Kharadi, Pune</span></div>
-                            <div class="row"><span class="label">Launch</span><span class="value">Q1 2027</span></div>
-                            <div class="row"><span class="label">RERA</span><span class="value">PUN-RERA-2024-002</span></div>
-                            <div style="margin-top:10px;"><span class="badge-outline"><i class="fas fa-home"></i> 3 & 4 BHK</span> <span class="badge-outline"><i class="fas fa-tree"></i> Green Zone</span></div>
-                        </div>
-                    </div>
-
-                    <div class="info-card">
-                        <div class="card-title"><i class="fas fa-drafting-compass"></i> Golden Acres</div>
-                        <div class="card-body">
-                            <div class="row"><span class="label">Status</span><span class="value"><span class="badge-gold" style="font-size:0.65rem;">Upcoming</span></span></div>
-                            <div class="row"><span class="label">Location</span><span class="value">Hinjewadi, Pune</span></div>
-                            <div class="row"><span class="label">Launch</span><span class="value">Q3 2027</span></div>
-                            <div class="row"><span class="label">RERA</span><span class="value">PUN-RERA-2024-003</span></div>
-                            <div style="margin-top:10px;"><span class="badge-outline"><i class="fas fa-home"></i> 2 & 3 BHK</span> <span class="badge-outline"><i class="fas fa-building"></i> Gated Community</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================================
-        PAGE: OUR PROJECTS (Completed/Old)
+        PAGE: OUR PROJECTS (Completed + Upcoming)
         ========================================================== -->
         <section class="page" id="page-our-projects" role="tabpanel">
             <div class="container section-padding">
                 <div class="page-header">
                     <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
                     <h2 class="section-title">Our Projects</h2>
-                    <p class="section-subtitle">Completed landmarks by Makwana Brows and Co.</p>
+                    <p class="section-subtitle">Completed and upcoming landmarks by Makwana Brows and Co.</p>
                 </div>
 
                 <div class="card-grid">
+                    <!-- Completed Projects -->
                     <div class="info-card">
                         <div class="card-title"><i class="fas fa-check-circle" style="color:#2e7d32;"></i> Ishananad</div>
                         <div class="card-body">
@@ -1664,12 +1680,35 @@
                             <div style="margin-top:10px;"><span class="badge-outline"><i class="fas fa-home"></i> 2 & 3 BHK</span> <span class="badge-outline"><i class="fas fa-water"></i> Lake View</span></div>
                         </div>
                     </div>
+
+                    <!-- Upcoming Projects -->
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-drafting-compass"></i> Serenity Hills</div>
+                        <div class="card-body">
+                            <div class="row"><span class="label">Status</span><span class="value"><span class="badge-gold" style="font-size:0.65rem;">Upcoming</span></span></div>
+                            <div class="row"><span class="label">Location</span><span class="value">Kharadi, Pune</span></div>
+                            <div class="row"><span class="label">Launch</span><span class="value">Q1 2027</span></div>
+                            <div class="row"><span class="label">RERA</span><span class="value">PUN-RERA-2024-002</span></div>
+                            <div style="margin-top:10px;"><span class="badge-outline"><i class="fas fa-home"></i> 3 & 4 BHK</span> <span class="badge-outline"><i class="fas fa-tree"></i> Green Zone</span></div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-drafting-compass"></i> Golden Acres</div>
+                        <div class="card-body">
+                            <div class="row"><span class="label">Status</span><span class="value"><span class="badge-gold" style="font-size:0.65rem;">Upcoming</span></span></div>
+                            <div class="row"><span class="label">Location</span><span class="value">Hinjewadi, Pune</span></div>
+                            <div class="row"><span class="label">Launch</span><span class="value">Q3 2027</span></div>
+                            <div class="row"><span class="label">RERA</span><span class="value">PUN-RERA-2024-003</span></div>
+                            <div style="margin-top:10px;"><span class="badge-outline"><i class="fas fa-home"></i> 2 & 3 BHK</span> <span class="badge-outline"><i class="fas fa-building"></i> Gated Community</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ==========================================================
-        PAGE: DOCUMENTS
+        PAGE: DOCUMENTS (kept for reference)
         ========================================================== -->
         <section class="page" id="page-documents" role="tabpanel">
             <div class="container section-padding">
@@ -1699,7 +1738,7 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: WARRANTY
+        PAGE: WARRANTY (kept)
         ========================================================== -->
         <section class="page" id="page-warranty" role="tabpanel">
             <div class="container section-padding">
@@ -1822,32 +1861,133 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: SERVICES
+        PAGE: SERVICES — NEW DETAILED SERVICE CARDS
         ========================================================== -->
         <section class="page" id="page-services" role="tabpanel">
             <div class="container section-padding">
                 <div class="page-header">
                     <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
-                    <h2 class="section-title">One Click Service Request</h2>
-                    <p class="section-subtitle">Tap any service to log a request instantly</p>
+                    <h2 class="section-title">Service &amp; Support</h2>
+                    <p class="section-subtitle">Details of installed products and service contacts</p>
                 </div>
 
-                <div class="service-grid">
-                    <div class="service-item" onclick="alert('Service Request: Plumbing')"><span class="service-icon">🔧</span><span class="service-label">Plumbing</span></div>
-                    <div class="service-item" onclick="alert('Service Request: Electrical')"><span class="service-icon">⚡</span><span class="service-label">Electrical</span></div>
-                    <div class="service-item" onclick="alert('Service Request: Carpenter')"><span class="service-icon">🪚</span><span class="service-label">Carpenter</span></div>
-                    <div class="service-item" onclick="alert('Service Request: Painter')"><span class="service-icon">🎨</span><span class="service-label">Painter</span></div>
-                    <div class="service-item" onclick="alert('Service Request: Lift')"><span class="service-icon">🛗</span><span class="service-label">Lift</span></div>
-                    <div class="service-item" onclick="alert('Service Request: Water Leakage')"><span class="service-icon">💧</span><span class="service-label">Water Leakage</span></div>
-                    <div class="service-item" onclick="alert('Service Request: AC Service')"><span class="service-icon">❄️</span><span class="service-label">AC Service</span></div>
-                    <div class="service-item" onclick="alert('Service Request: Housekeeping')"><span class="service-icon">🧹</span><span class="service-label">Housekeeping</span></div>
-                    <div class="service-item" onclick="alert('Service Request: Garden')"><span class="service-icon">🌿</span><span class="service-label">Garden</span></div>
-                    <div class="service-item" onclick="alert('Service Request: Security')"><span class="service-icon">🛡️</span><span class="service-label">Security</span></div>
-                    <div class="service-item" onclick="alert('Service Request: Pest Control')"><span class="service-icon">🐜</span><span class="service-label">Pest Control</span></div>
-                    <div class="service-item" onclick="alert('Service Request: General Complaint')"><span class="service-icon">📋</span><span class="service-label">Complaint</span></div>
+                <div class="service-detail-grid">
+                    <!-- Tiles -->
+                    <div class="service-detail-card">
+                        <div class="service-icon">🧱</div>
+                        <div class="service-name">Vitrified Tiles</div>
+                        <div class="service-detail">
+                            <div class="row"><span class="label">Vendor</span><span class="value">Raj Tiles</span></div>
+                            <div class="row"><span class="label">Contact</span><span class="value">+91 98765 12345</span></div>
+                            <div class="row"><span class="label">Owner</span><span class="value">Mr. Rajesh</span></div>
+                            <div class="row"><span class="label">Install Date</span><span class="value">10 Jan 2026</span></div>
+                            <div class="row"><span class="label">Free Service</span><span class="value">5 Years</span></div>
+                            <div class="row"><span class="label">Address</span><span class="value">Tile World, Pune</span></div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn" onclick="alert('Calling Raj Tiles…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                            <button class="btn btn-gold" onclick="alert('Service request logged for Tiles')"><i class="fas fa-tools"></i> Service</button>
+                        </div>
+                    </div>
+
+                    <!-- Sanitaryware -->
+                    <div class="service-detail-card">
+                        <div class="service-icon">🚿</div>
+                        <div class="service-name">Sanitaryware</div>
+                        <div class="service-detail">
+                            <div class="row"><span class="label">Vendor</span><span class="value">Jaquar World</span></div>
+                            <div class="row"><span class="label">Contact</span><span class="value">+91 98220 56789</span></div>
+                            <div class="row"><span class="label">Owner</span><span class="value">Mr. Suresh</span></div>
+                            <div class="row"><span class="label">Install Date</span><span class="value">15 Jan 2026</span></div>
+                            <div class="row"><span class="label">Free Service</span><span class="value">7 Years</span></div>
+                            <div class="row"><span class="label">Address</span><span class="value">Jaquar Showroom, Pune</span></div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn" onclick="alert('Calling Jaquar World…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                            <button class="btn btn-gold" onclick="alert('Service request logged for Sanitaryware')"><i class="fas fa-tools"></i> Service</button>
+                        </div>
+                    </div>
+
+                    <!-- CP Fittings -->
+                    <div class="service-detail-card">
+                        <div class="service-icon">🔧</div>
+                        <div class="service-name">CP Fittings</div>
+                        <div class="service-detail">
+                            <div class="row"><span class="label">Vendor</span><span class="value">Jaquar</span></div>
+                            <div class="row"><span class="label">Contact</span><span class="value">+91 98220 12345</span></div>
+                            <div class="row"><span class="label">Owner</span><span class="value">Mr. Raj</span></div>
+                            <div class="row"><span class="label">Install Date</span><span class="value">20 Jan 2026</span></div>
+                            <div class="row"><span class="label">Free Service</span><span class="value">5 Years</span></div>
+                            <div class="row"><span class="label">Address</span><span class="value">Jaquar Store, Pune</span></div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn" onclick="alert('Calling Jaquar…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                            <button class="btn btn-gold" onclick="alert('Service request logged for CP Fittings')"><i class="fas fa-tools"></i> Service</button>
+                        </div>
+                    </div>
+
+                    <!-- Plumber -->
+                    <div class="service-detail-card">
+                        <div class="service-icon">💧</div>
+                        <div class="service-name">Plumbing</div>
+                        <div class="service-detail">
+                            <div class="row"><span class="label">Vendor</span><span class="value">Plumbing Solutions</span></div>
+                            <div class="row"><span class="label">Contact</span><span class="value">+91 98765 43210</span></div>
+                            <div class="row"><span class="label">Owner</span><span class="value">Mr. Prakash</span></div>
+                            <div class="row"><span class="label">Install Date</span><span class="value">12 Jan 2026</span></div>
+                            <div class="row"><span class="label">Free Service</span><span class="value">3 Years</span></div>
+                            <div class="row"><span class="label">Address</span><span class="value">Plumbing Hub, Pune</span></div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn" onclick="alert('Calling Plumbing Solutions…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                            <button class="btn btn-gold" onclick="alert('Service request logged for Plumbing')"><i class="fas fa-tools"></i> Service</button>
+                        </div>
+                    </div>
+
+                    <!-- Lift -->
+                    <div class="service-detail-card">
+                        <div class="service-icon">🛗</div>
+                        <div class="service-name">Lift / Elevator</div>
+                        <div class="service-detail">
+                            <div class="row"><span class="label">Vendor</span><span class="value">Schindler India</span></div>
+                            <div class="row"><span class="label">Contact</span><span class="value">1800 200 333</span></div>
+                            <div class="row"><span class="label">Owner</span><span class="value">Mr. Arjun</span></div>
+                            <div class="row"><span class="label">Install Date</span><span class="value">01 Feb 2026</span></div>
+                            <div class="row"><span class="label">Free Service</span><span class="value">10 Years</span></div>
+                            <div class="row"><span class="label">Address</span><span class="value">Schindler Office, Pune</span></div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn" onclick="alert('Calling Schindler…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                            <button class="btn btn-gold" onclick="alert('Service request logged for Lift')"><i class="fas fa-tools"></i> Service</button>
+                        </div>
+                    </div>
+
+                    <!-- Watchman / Security -->
+                    <div class="service-detail-card">
+                        <div class="service-icon">🛡️</div>
+                        <div class="service-name">Security / Watchman</div>
+                        <div class="service-detail">
+                            <div class="row"><span class="label">Vendor</span><span class="value">Secure Guard Services</span></div>
+                            <div class="row"><span class="label">Contact</span><span class="value">+91 98220 11223</span></div>
+                            <div class="row"><span class="label">Owner</span><span class="value">Mr. Ravi</span></div>
+                            <div class="row"><span class="label">Install Date</span><span class="value">01 Mar 2026</span></div>
+                            <div class="row"><span class="label">Free Service</span><span class="value">2 Years</span></div>
+                            <div class="row"><span class="label">Address</span><span class="value">Security Office, Pune</span></div>
+                        </div>
+                        <div class="service-actions">
+                            <button class="btn" onclick="alert('Calling Secure Guard…')"><i class="fas fa-phone"></i> Call</button>
+                            <button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                            <button class="btn btn-gold" onclick="alert('Service request logged for Security')"><i class="fas fa-tools"></i> Service</button>
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Complaint Form -->
+                <!-- Complaint Form (kept) -->
                 <div style="margin-top:32px;background:var(--white);border-radius:var(--radius-md);padding:24px;border:1px solid var(--gray-100);box-shadow:var(--shadow-sm);">
                     <h4 style="font-weight:600;margin-bottom:12px;"><i class="fas fa-pen gold-accent"></i> File a Complaint</h4>
                     <form onsubmit="alert('Complaint submitted! Tracking ID: SR-2026-0042');return false;">
@@ -1877,7 +2017,7 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: BANK
+        PAGE: BANK — removed Eligibility & Tools
         ========================================================== -->
         <section class="page" id="page-bank" role="tabpanel">
             <div class="container section-padding">
@@ -1917,9 +2057,9 @@
                     </div>
                 </div>
 
-                <!-- Calculators -->
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;">
-                    <div class="info-card">
+                <!-- Only EMI Calculator now -->
+                <div style="margin-top:24px;">
+                    <div class="info-card" style="max-width:500px;margin:0 auto;">
                         <div class="card-title"><i class="fas fa-calculator"></i> EMI Calculator</div>
                         <div class="card-body">
                             <div style="display:grid;gap:10px;">
@@ -1930,21 +2070,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="info-card">
-                        <div class="card-title"><i class="fas fa-check-circle"></i> Eligibility &amp; Tools</div>
-                        <div class="card-body">
-                            <button class="btn btn-outline w-full" style="justify-content:center;margin-bottom:10px;" onclick="alert('You are eligible for up to ₹75,00,000')"><i class="fas fa-user-check"></i> Check Eligibility</button>
-                            <button class="btn btn-outline w-full" style="justify-content:center;margin-bottom:10px;" onclick="alert('Balance transfer form opened.')"><i class="fas fa-exchange-alt"></i> Balance Transfer</button>
-                            <button class="btn btn-outline w-full" style="justify-content:center;margin-bottom:10px;" onclick="alert('Top-up loan form opened.')"><i class="fas fa-plus-circle"></i> Top Up Loan</button>
-                            <button class="btn btn-outline w-full" style="justify-content:center;" onclick="alert('Loan status: Under Processing')"><i class="fas fa-chart-line"></i> Loan Status</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
         <!-- ==========================================================
-        PAGE: EMERGENCY
+        PAGE: EMERGENCY — no 24x7, highlighted
         ========================================================== -->
         <section class="page" id="page-emergency" role="tabpanel">
             <div class="container section-padding">
@@ -1955,24 +2086,69 @@
                 </div>
 
                 <div class="emergency-grid">
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-police" style="color:var(--gold);margin-right:6px;"></i> Police</div><div class="emergency-number">100</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Police…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-fire" style="color:var(--gold);margin-right:6px;"></i> Fire Brigade</div><div class="emergency-number">101</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Fire Brigade…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-ambulance" style="color:var(--gold);margin-right:6px;"></i> Ambulance</div><div class="emergency-number">108</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Ambulance…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-hospital" style="color:var(--gold);margin-right:6px;"></i> Ruby Hall Hospital</div><div class="emergency-number">020 2612 3456</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Hospital…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-bolt" style="color:var(--gold);margin-right:6px;"></i> Electric Dept.</div><div class="emergency-number">1912</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Electric Dept…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-water" style="color:var(--gold);margin-right:6px;"></i> Water Dept.</div><div class="emergency-number">1916</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Water Dept…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-gas-pump" style="color:var(--gold);margin-right:6px;"></i> Gas Agency</div><div class="emergency-number">1800 123 456</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Gas Agency…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-building" style="color:var(--gold);margin-right:6px;"></i> Society Office</div><div class="emergency-number">020 2612 7890</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Society Office…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-shield-alt" style="color:var(--gold);margin-right:6px;"></i> Security Gate</div><div class="emergency-number">020 2612 7891</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Security…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-elevator" style="color:var(--gold);margin-right:6px;"></i> Lift Emergency</div><div class="emergency-number">1800 200 333</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Lift Emergency…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-hard-hat" style="color:var(--gold);margin-right:6px;"></i> Builder Emergency</div><div class="emergency-number">+91 98220 12345</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Builder Emergency…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-headset" style="color:var(--gold);margin-right:6px;"></i> 24x7 Helpline</div><div class="emergency-number">1800 123 8888</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Helpline…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <!-- Highlighted critical ones -->
+                    <div class="emergency-item highlight">
+                        <div class="emergency-name"><i class="fas fa-police" style="color:#d32f2f;margin-right:6px;"></i> Police</div>
+                        <div class="emergency-number">100</div>
+                        <div class="emergency-actions"><button class="btn" onclick="alert('Calling Police…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div>
+                    </div>
+                    <div class="emergency-item highlight">
+                        <div class="emergency-name"><i class="fas fa-fire" style="color:#d32f2f;margin-right:6px;"></i> Fire Brigade</div>
+                        <div class="emergency-number">101</div>
+                        <div class="emergency-actions"><button class="btn" onclick="alert('Calling Fire Brigade…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div>
+                    </div>
+                    <div class="emergency-item highlight">
+                        <div class="emergency-name"><i class="fas fa-ambulance" style="color:#d32f2f;margin-right:6px;"></i> Ambulance</div>
+                        <div class="emergency-number">108</div>
+                        <div class="emergency-actions"><button class="btn" onclick="alert('Calling Ambulance…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div>
+                    </div>
+                    <div class="emergency-item highlight">
+                        <div class="emergency-name"><i class="fas fa-hospital" style="color:#d32f2f;margin-right:6px;"></i> Ruby Hall Hospital</div>
+                        <div class="emergency-number">020 2612 3456</div>
+                        <div class="emergency-actions"><button class="btn" onclick="alert('Calling Hospital…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-name"><i class="fas fa-bolt" style="color:var(--gold);margin-right:6px;"></i> Electric Dept.</div>
+                        <div class="emergency-number">1912</div>
+                        <div class="emergency-actions"><button class="btn" onclick="alert('Calling Electric Dept…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-name"><i class="fas fa-water" style="color:var(--gold);margin-right:6px;"></i> Water Dept.</div>
+                        <div class="emergency-number">1916</div>
+                        <div class="emergency-actions"><button class="btn" onclick="alert('Calling Water Dept…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-name"><i class="fas fa-gas-pump" style="color:var(--gold);margin-right:6px;"></i> Gas Agency</div>
+                        <div class="emergency-number">1800 123 456</div>
+                        <div class="emergency-actions"><button class="btn" onclick="alert('Calling Gas Agency…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-name"><i class="fas fa-building" style="color:var(--gold);margin-right:6px;"></i> Society Office</div>
+                        <div class="emergency-number">020 2612 7890</div>
+                        <div class="emergency-actions"><button class="btn" onclick="alert('Calling Society Office…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-name"><i class="fas fa-shield-alt" style="color:var(--gold);margin-right:6px;"></i> Security Gate</div>
+                        <div class="emergency-number">020 2612 7891</div>
+                        <div class="emergency-actions"><button class="btn" onclick="alert('Calling Security…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-name"><i class="fas fa-elevator" style="color:var(--gold);margin-right:6px;"></i> Lift Emergency</div>
+                        <div class="emergency-number">1800 200 333</div>
+                        <div class="emergency-actions"><button class="btn" onclick="alert('Calling Lift Emergency…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div>
+                    </div>
+                    <div class="emergency-item">
+                        <div class="emergency-name"><i class="fas fa-hard-hat" style="color:var(--gold);margin-right:6px;"></i> Builder Emergency</div>
+                        <div class="emergency-number">+91 98220 12345</div>
+                        <div class="emergency-actions"><button class="btn" onclick="alert('Calling Builder Emergency…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div>
+                    </div>
+                    <!-- 24x7 removed -->
                 </div>
             </div>
         </section>
 
         <!-- ==========================================================
-        PAGE: GALLERY
+        PAGE: GALLERY — small badges
         ========================================================== -->
         <section class="page" id="page-gallery" role="tabpanel">
             <div class="container section-padding">
@@ -1982,7 +2158,7 @@
                     <p class="section-subtitle">Building, amenities &amp; community spaces</p>
                 </div>
 
-                <div style="display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
+                <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;">
                     <span class="badge-gold"><i class="fas fa-image"></i> Photos</span>
                     <span class="badge-outline"><i class="fas fa-video"></i> Videos</span>
                 </div>
@@ -2002,18 +2178,18 @@
                     <div class="gallery-item" style="background:#f0e8f0;color:#6a3a7a;font-size:2rem;">🎬</div>
                 </div>
 
-                <div style="margin-top:24px;padding:16px 20px;background:var(--gray-50);border-radius:var(--radius-sm);display:flex;align-items:center;gap:12px;flex-wrap:wrap;border:1px solid var(--gray-100);">
-                    <i class="fas fa-video" style="color:var(--gold);font-size:1.4rem;"></i>
-                    <span style="font-weight:500;">Videos:</span>
-                    <span class="badge-outline" style="cursor:pointer;" onclick="alert('Playing: Project Walkthrough')">Project Walkthrough</span>
-                    <span class="badge-outline" style="cursor:pointer;" onclick="alert('Playing: Club House Tour')">Club House Tour</span>
-                    <span class="badge-outline" style="cursor:pointer;" onclick="alert('Playing: Garden & Pool')">Garden &amp; Pool</span>
+                <div style="margin-top:20px;padding:14px 18px;background:var(--gray-50);border-radius:var(--radius-sm);display:flex;align-items:center;gap:10px;flex-wrap:wrap;border:1px solid var(--gray-100);">
+                    <i class="fas fa-video" style="color:var(--gold);font-size:1.2rem;"></i>
+                    <span style="font-weight:500;font-size:0.85rem;">Videos:</span>
+                    <span class="gallery-video-badge" onclick="alert('Playing: Project Walkthrough')">Walkthrough</span>
+                    <span class="gallery-video-badge" onclick="alert('Playing: Club House Tour')">Club House</span>
+                    <span class="gallery-video-badge" onclick="alert('Playing: Garden & Pool')">Garden &amp; Pool</span>
                 </div>
             </div>
         </section>
 
         <!-- ==========================================================
-        PAGE: DOWNLOADS
+        PAGE: DOWNLOADS — with View, Download, Print
         ========================================================== -->
         <section class="page" id="page-downloads" role="tabpanel">
             <div class="container section-padding">
@@ -2024,12 +2200,12 @@
                 </div>
 
                 <div class="card-grid">
-                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Sale Deed</div><div class="doc-meta">PDF · 2.4 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading Sale Deed…')"><i class="fas fa-download"></i> Download</button></div></div>
-                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Agreement</div><div class="doc-meta">PDF · 1.8 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading Agreement…')"><i class="fas fa-download"></i> Download</button></div></div>
-                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Possession Letter</div><div class="doc-meta">PDF · 1.2 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading Possession Letter…')"><i class="fas fa-download"></i> Download</button></div></div>
-                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Occupancy Certificate</div><div class="doc-meta">PDF · 0.9 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading OC…')"><i class="fas fa-download"></i> Download</button></div></div>
-                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">RERA Certificate</div><div class="doc-meta">PDF · 0.8 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading RERA Certificate…')"><i class="fas fa-download"></i> Download</button></div></div>
-                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Warranty Summary</div><div class="doc-meta">PDF · 1.6 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Downloading Warranty Summary…')"><i class="fas fa-download"></i> Download</button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Sale Deed</div><div class="doc-meta">PDF · 2.4 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Sale Deed')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Sale Deed…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Agreement</div><div class="doc-meta">PDF · 1.8 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Agreement')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Agreement…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Possession Letter</div><div class="doc-meta">PDF · 1.2 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Possession Letter')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Possession Letter…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Occupancy Certificate</div><div class="doc-meta">PDF · 0.9 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: OC')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading OC…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">RERA Certificate</div><div class="doc-meta">PDF · 0.8 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: RERA Certificate')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading RERA Certificate…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
+                    <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Warranty Summary</div><div class="doc-meta">PDF · 1.6 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Warranty Summary')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Warranty Summary…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
                 </div>
             </div>
         </section>
@@ -2104,10 +2280,11 @@
                     target.classList.add('active');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
+                // Update active state for nav links (buttons)
                 navLinks.forEach(link => {
-                    link.classList.remove('active');
+                    link.classList.remove('active-btn');
                     if (link.dataset.page === pageId) {
-                        link.classList.add('active');
+                        link.classList.add('active-btn');
                     }
                 });
                 currentPage = pageId;
@@ -2144,8 +2321,7 @@
                         'The Occupancy Certificate (OC) is ready. Check Documents → Occupancy Certificate.',
                         'Warranty details: All products have active warranties. Check the Warranty section for full details.',
                         'Builder contact: Makwana Brows and Co. — +91 98220 12345',
-                        'Emergency numbers are available in the Emergency section. Police: 100, Fire: 101, Ambulance: 108.',
-                        'Property information: Ishananad, Tower A, Wing East, Flat A-1202. Possession: 15 Dec 2026.'
+                        'Emergency numbers are available in the Emergency section. Police: 100, Fire: 101, Ambulance: 108.'
                     ];
                     botMsg.textContent = responses[Math.floor(Math.random() * responses.length)];
                     aiMessages.appendChild(botMsg);

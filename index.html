@@ -963,52 +963,6 @@
         }
 
         /* ==========================================================
-               NOTICE BOARD
-               ========================================================== */
-        .notice-item {
-            background: var(--white);
-            border-radius: var(--radius-md);
-            padding: 20px 24px;
-            border: 1px solid var(--gray-100);
-            box-shadow: var(--shadow-sm);
-            transition: all var(--transition);
-            margin-bottom: 14px;
-        }
-
-        .notice-item:hover {
-            box-shadow: var(--shadow-md);
-            border-color: rgba(201, 168, 76, 0.15);
-        }
-
-        .notice-item .notice-title {
-            font-weight: 600;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .notice-item .notice-title .badge {
-            font-size: 0.6rem;
-            font-weight: 600;
-            padding: 2px 12px;
-            border-radius: 60px;
-            background: var(--gold);
-            color: var(--navy);
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-        }
-        .notice-item .notice-meta {
-            font-size: 0.8rem;
-            color: var(--gray-400);
-            margin-top: 4px;
-        }
-        .notice-item .notice-body {
-            margin-top: 10px;
-            color: var(--gray-600);
-            font-size: 0.92rem;
-        }
-
-        /* ==========================================================
                GALLERY
                ========================================================== */
         .gallery-grid {
@@ -1036,38 +990,6 @@
             transform: scale(1.02);
             box-shadow: var(--shadow-md);
             border-color: var(--gold);
-        }
-
-        /* ==========================================================
-               FEEDBACK
-               ========================================================== */
-        .feedback-stars {
-            display: flex;
-            gap: 8px;
-            font-size: 2rem;
-            color: var(--gray-300);
-            cursor: pointer;
-            margin-bottom: 16px;
-        }
-        .feedback-stars .star.active {
-            color: var(--gold);
-        }
-
-        .feedback-form textarea {
-            width: 100%;
-            padding: 16px;
-            border-radius: var(--radius-sm);
-            border: 1px solid var(--gray-200);
-            font-family: var(--font-sans);
-            font-size: 0.95rem;
-            resize: vertical;
-            min-height: 120px;
-            transition: border var(--transition);
-        }
-        .feedback-form textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-            box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.10);
         }
 
         /* ==========================================================
@@ -1361,7 +1283,6 @@
         body.dark-mode .warranty-card,
         body.dark-mode .service-item,
         body.dark-mode .emergency-item,
-        body.dark-mode .notice-item,
         body.dark-mode .bank-card,
         body.dark-mode .gallery-item {
             background: var(--gray-50);
@@ -1623,11 +1544,11 @@
             <li><a href="#" data-page="services"><i class="fas fa-tools"></i> Services</a></li>
             <li><a href="#" data-page="bank"><i class="fas fa-university"></i> Bank</a></li>
             <li><a href="#" data-page="emergency"><i class="fas fa-phone-alt"></i> Emergency</a></li>
-            <li><a href="#" data-page="notice"><i class="fas fa-bullhorn"></i> Notices</a></li>
             <li><a href="#" data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
-            <li><a href="#" data-page="feedback"><i class="fas fa-star"></i> Feedback</a></li>
             <li><a href="#" data-page="downloads"><i class="fas fa-download"></i> Downloads</a></li>
-            <li><a href="#" data-page="support"><i class="fas fa-headset"></i> Support</a></li>
+            <!-- QR & Location added to nav -->
+            <li><a href="#" data-page="qr"><i class="fas fa-qrcode"></i> QR Code</a></li>
+            <li><a href="#" data-page="location"><i class="fas fa-map-pin"></i> Location</a></li>
         </ul>
     </nav>
 
@@ -1684,8 +1605,9 @@
                         </div>
                         <div class="hero-actions">
                             <a href="#" class="btn btn-gold" data-page="property"><i class="fas fa-home"></i> View Property</a>
-                            <a href="#" class="btn" data-page="documents"><i class="fas fa-file-alt"></i> Documents</a>
-                            <a href="#" class="btn" data-page="warranty"><i class="fas fa-shield-alt"></i> Warranty</a>
+                            <!-- Replaced Documents & Warranty with QR & Location -->
+                            <a href="#" class="btn" data-page="qr"><i class="fas fa-qrcode"></i> QR Code</a>
+                            <a href="#" class="btn" data-page="location"><i class="fas fa-map-pin"></i> Location</a>
                         </div>
                     </div>
                 </div>
@@ -1700,7 +1622,7 @@
                     <a href="#" class="btn" onclick="alert('QR Code scanned.')"><i class="fas fa-qrcode"></i> QR</a>
                 </div>
 
-                <!-- DASHBOARD GRID -->
+                <!-- DASHBOARD GRID — Removed: Notices, Feedback, Support, Documents, Warranty. Added: QR, Location -->
                 <div class="dash-grid">
                     <a href="#" class="dash-card" data-page="builder">
                         <div class="dash-icon"><i class="fas fa-building"></i></div>
@@ -1712,15 +1634,17 @@
                         <div class="dash-label">Property</div>
                         <div class="dash-count">Details</div>
                     </a>
-                    <a href="#" class="dash-card" data-page="documents">
-                        <div class="dash-icon"><i class="fas fa-file-alt"></i></div>
-                        <div class="dash-label">Documents</div>
-                        <div class="dash-count">14</div>
+                    <!-- QR Card -->
+                    <a href="#" class="dash-card" data-page="qr">
+                        <div class="dash-icon"><i class="fas fa-qrcode"></i></div>
+                        <div class="dash-label">QR Code</div>
+                        <div class="dash-count">Scan</div>
                     </a>
-                    <a href="#" class="dash-card" data-page="warranty">
-                        <div class="dash-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div class="dash-label">Warranty</div>
-                        <div class="dash-count">18</div>
+                    <!-- Location Card -->
+                    <a href="#" class="dash-card" data-page="location">
+                        <div class="dash-icon"><i class="fas fa-map-pin"></i></div>
+                        <div class="dash-label">Location</div>
+                        <div class="dash-count">Map</div>
                     </a>
                     <a href="#" class="dash-card" data-page="services">
                         <div class="dash-icon"><i class="fas fa-tools"></i></div>
@@ -1737,30 +1661,15 @@
                         <div class="dash-label">Emergency</div>
                         <div class="dash-count">12</div>
                     </a>
-                    <a href="#" class="dash-card" data-page="notice">
-                        <div class="dash-icon"><i class="fas fa-bullhorn"></i></div>
-                        <div class="dash-label">Notices</div>
-                        <div class="dash-count">5</div>
-                    </a>
                     <a href="#" class="dash-card" data-page="gallery">
                         <div class="dash-icon"><i class="fas fa-images"></i></div>
                         <div class="dash-label">Gallery</div>
                         <div class="dash-count">24</div>
                     </a>
-                    <a href="#" class="dash-card" data-page="feedback">
-                        <div class="dash-icon"><i class="fas fa-star"></i></div>
-                        <div class="dash-label">Feedback</div>
-                        <div class="dash-count">Rate</div>
-                    </a>
                     <a href="#" class="dash-card" data-page="downloads">
                         <div class="dash-icon"><i class="fas fa-download"></i></div>
                         <div class="dash-label">Downloads</div>
                         <div class="dash-count">All</div>
-                    </a>
-                    <a href="#" class="dash-card" data-page="support">
-                        <div class="dash-icon"><i class="fas fa-headset"></i></div>
-                        <div class="dash-label">Support</div>
-                        <div class="dash-count">24/7</div>
                     </a>
                 </div>
 
@@ -1918,7 +1827,7 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: DOCUMENTS
+        PAGE: DOCUMENTS (kept, not removed)
         ========================================================== -->
         <section class="page" id="page-documents" role="tabpanel">
             <div class="container section-padding">
@@ -1934,7 +1843,6 @@
                 </div>
 
                 <div class="card-grid">
-                    <!-- Document cards -->
                     <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Sale Deed</div><div class="doc-meta">PDF · 2.4 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Sale Deed')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Sale Deed…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
                     <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Agreement</div><div class="doc-meta">PDF · 1.8 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Agreement')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Agreement…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
                     <div class="doc-card"><div class="doc-icon"><i class="fas fa-file-pdf"></i></div><div class="doc-info"><div class="doc-name">Possession Letter</div><div class="doc-meta">PDF · 1.2 MB</div></div><div class="doc-actions"><button class="btn" onclick="alert('Preview: Possession Letter')"><i class="fas fa-eye"></i></button><button class="btn" onclick="alert('Downloading Possession Letter…')"><i class="fas fa-download"></i></button><button class="btn" onclick="window.print()"><i class="fas fa-print"></i></button></div></div>
@@ -1949,7 +1857,7 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: WARRANTY
+        PAGE: WARRANTY (kept, not removed)
         ========================================================== -->
         <section class="page" id="page-warranty" role="tabpanel">
             <div class="container section-padding">
@@ -1960,7 +1868,6 @@
                 </div>
 
                 <div class="card-grid">
-                    <!-- Warranty Cards -->
                     <div class="warranty-card">
                         <div class="warranty-img" style="background:#e8f0e8;color:#2d6a2d;">🧱</div>
                         <div class="warranty-name">Vitrified Tiles</div>
@@ -2223,49 +2130,6 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: NOTICE
-        ========================================================== -->
-        <section class="page" id="page-notice" role="tabpanel">
-            <div class="container section-padding">
-                <div class="page-header">
-                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
-                    <h2 class="section-title">Notice Board</h2>
-                    <p class="section-subtitle">Builder &amp; society announcements</p>
-                </div>
-
-                <div class="notice-item">
-                    <div class="notice-title"><span class="badge">Builder</span> Annual Maintenance Schedule</div>
-                    <div class="notice-meta"><i class="far fa-calendar-alt"></i> 28 Jun 2026 &middot; <i class="far fa-clock"></i> 10:00 AM</div>
-                    <div class="notice-body">Annual maintenance of all common areas will begin from 1st July. Water tanks, generators, and fire systems will be inspected. Please cooperate.</div>
-                </div>
-
-                <div class="notice-item">
-                    <div class="notice-title"><span class="badge" style="background:var(--gray-300);color:var(--navy);">Society</span> Water Shutdown Notice</div>
-                    <div class="notice-meta"><i class="far fa-calendar-alt"></i> 30 Jun 2026 &middot; <i class="far fa-clock"></i> 8:00 AM – 2:00 PM</div>
-                    <div class="notice-body">Water supply will be shut down for 6 hours on 30th June for pipeline maintenance. Please store adequate water in advance.</div>
-                </div>
-
-                <div class="notice-item">
-                    <div class="notice-title"><span class="badge" style="background:var(--gray-300);color:var(--navy);">Society</span> Power Shutdown – Transformer Maintenance</div>
-                    <div class="notice-meta"><i class="far fa-calendar-alt"></i> 2 Jul 2026 &middot; <i class="far fa-clock"></i> 9:00 AM – 1:00 PM</div>
-                    <div class="notice-body">MSEDCL has scheduled a power shutdown for transformer maintenance. Backup generators will be operational for common areas.</div>
-                </div>
-
-                <div class="notice-item">
-                    <div class="notice-title"><span class="badge">Builder</span> Ganesh Festival Celebration</div>
-                    <div class="notice-meta"><i class="far fa-calendar-alt"></i> 7 Sep 2026 &middot; <i class="far fa-clock"></i> 6:00 PM</div>
-                    <div class="notice-body">Join us for the Ganesh Festival celebration in the club house. All residents are invited. Cultural programs and dinner will be arranged.</div>
-                </div>
-
-                <div class="notice-item">
-                    <div class="notice-title"><span class="badge" style="background:var(--gray-300);color:var(--navy);">Society</span> Annual General Meeting (AGM)</div>
-                    <div class="notice-meta"><i class="far fa-calendar-alt"></i> 15 Aug 2026 &middot; <i class="far fa-clock"></i> 11:00 AM</div>
-                    <div class="notice-body">The Annual General Meeting of the society will be held on 15th August. Agenda includes budget approval, new committee elections, and maintenance updates.</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================================
         PAGE: GALLERY
         ========================================================== -->
         <section class="page" id="page-gallery" role="tabpanel">
@@ -2307,39 +2171,6 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: FEEDBACK
-        ========================================================== -->
-        <section class="page" id="page-feedback" role="tabpanel">
-            <div class="container section-padding">
-                <div class="page-header">
-                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
-                    <h2 class="section-title">Feedback</h2>
-                    <p class="section-subtitle">Rate your experience &amp; share suggestions</p>
-                </div>
-
-                <div class="info-card" style="max-width:600px;margin:0 auto;">
-                    <div class="card-title"><i class="fas fa-star"></i> Rate Your Experience</div>
-                    <div class="card-body">
-                        <div class="feedback-stars" id="starRating">
-                            <span class="star" data-value="1">★</span>
-                            <span class="star" data-value="2">★</span>
-                            <span class="star" data-value="3">★</span>
-                            <span class="star" data-value="4">★</span>
-                            <span class="star" data-value="5">★</span>
-                        </div>
-                        <form class="feedback-form" onsubmit="alert('Thank you for your feedback! We value your input.');return false;">
-                            <textarea placeholder="Share your suggestions, complaints, or any feedback…" required></textarea>
-                            <div style="display:flex;gap:12px;margin-top:14px;flex-wrap:wrap;">
-                                <button type="submit" class="btn btn-gold"><i class="fas fa-paper-plane"></i> Submit Feedback</button>
-                                <button type="button" class="btn btn-outline" onclick="alert('Contact builder: +91 98220 12345')"><i class="fas fa-building"></i> Contact Builder</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================================
         PAGE: DOWNLOADS
         ========================================================== -->
         <section class="page" id="page-downloads" role="tabpanel">
@@ -2362,51 +2193,80 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: SUPPORT
+        PAGE: QR (New)
         ========================================================== -->
-        <section class="page" id="page-support" role="tabpanel">
+        <section class="page" id="page-qr" role="tabpanel">
             <div class="container section-padding">
                 <div class="page-header">
                     <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
-                    <h2 class="section-title">Customer Support</h2>
-                    <p class="section-subtitle">We're here to help 24x7</p>
+                    <h2 class="section-title">QR Code</h2>
+                    <p class="section-subtitle">Scan to access your Digital Property Passport instantly</p>
                 </div>
 
-                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;">
-                    <div class="info-card" style="text-align:center;">
-                        <div style="font-size:2.8rem;color:var(--gold);margin-bottom:8px;"><i class="fas fa-headset"></i></div>
-                        <div style="font-weight:600;font-size:1.1rem;">Live Chat</div>
-                        <div style="font-size:0.85rem;color:var(--gray-500);margin:4px 0 12px;">Available 24x7</div>
-                        <button class="btn btn-gold w-full" onclick="alert('Live chat started…')"><i class="fas fa-comment-dots"></i> Start Chat</button>
-                    </div>
-
-                    <div class="info-card" style="text-align:center;">
-                        <div style="font-size:2.8rem;color:var(--gold);margin-bottom:8px;"><i class="fab fa-whatsapp"></i></div>
-                        <div style="font-weight:600;font-size:1.1rem;">WhatsApp</div>
-                        <div style="font-size:0.85rem;color:var(--gray-500);margin:4px 0 12px;">+91 98765 43210</div>
-                        <button class="btn btn-outline w-full" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i> Message</button>
-                    </div>
-
-                    <div class="info-card" style="text-align:center;">
-                        <div style="font-size:2.8rem;color:var(--gold);margin-bottom:8px;"><i class="fas fa-phone"></i></div>
-                        <div style="font-weight:600;font-size:1.1rem;">Call Us</div>
-                        <div style="font-size:0.85rem;color:var(--gray-500);margin:4px 0 12px;">+91 98220 12345</div>
-                        <button class="btn btn-outline w-full" onclick="alert('Calling support…')"><i class="fas fa-phone"></i> Call Now</button>
-                    </div>
-
-                    <div class="info-card" style="text-align:center;">
-                        <div style="font-size:2.8rem;color:var(--gold);margin-bottom:8px;"><i class="fas fa-envelope"></i></div>
-                        <div style="font-weight:600;font-size:1.1rem;">Email</div>
-                        <div style="font-size:0.85rem;color:var(--gray-500);margin:4px 0 12px;">support@ishananad.com</div>
-                        <button class="btn btn-outline w-full" onclick="alert('Opening email…')"><i class="fas fa-envelope"></i> Send Email</button>
+                <div style="display:flex;flex-direction:column;align-items:center;padding:20px 0;">
+                    <div style="background:var(--white);border-radius:var(--radius-lg);padding:40px;box-shadow:var(--shadow-md);border:1px solid var(--gray-100);text-align:center;max-width:400px;width:100%;">
+                        <div style="width:200px;height:200px;margin:0 auto 24px;background:var(--gray-100);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;font-size:6rem;color:var(--gold);border:2px dashed var(--gray-200);">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <h3 style="font-weight:600;font-size:1.2rem;margin-bottom:4px;">Scan to Access</h3>
+                        <p style="color:var(--gray-500);font-size:0.9rem;">Use your phone camera to scan the QR code and instantly access your property dashboard.</p>
+                        <div style="margin-top:20px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+                            <button class="btn btn-gold" onclick="alert('QR Code scanned successfully!')"><i class="fas fa-camera"></i> Scan Now</button>
+                            <button class="btn btn-outline" onclick="alert('QR Code image downloaded.')"><i class="fas fa-download"></i> Download QR</button>
+                        </div>
+                        <div style="margin-top:16px;padding:12px 16px;background:var(--gray-50);border-radius:var(--radius-sm);font-size:0.85rem;color:var(--gray-500);">
+                            <i class="fas fa-nfc-symbol" style="color:var(--gold);margin-right:8px;"></i> NFC Ready — Tap to share
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div style="margin-top:32px;padding:20px 24px;background:var(--gray-50);border-radius:var(--radius-md);border:1px solid var(--gray-100);text-align:center;">
-                    <p style="color:var(--gray-500);font-size:0.9rem;">
-                        <i class="fas fa-clock" style="color:var(--gold);margin-right:8px;"></i>
-                        Support Hours: 24x7 &middot; Emergency: +91 98220 12345
-                    </p>
+        <!-- ==========================================================
+        PAGE: LOCATION (New)
+        ========================================================== -->
+        <section class="page" id="page-location" role="tabpanel">
+            <div class="container section-padding">
+                <div class="page-header">
+                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
+                    <h2 class="section-title">Location</h2>
+                    <p class="section-subtitle">Find Ishananad — Wanwadi, Pune</p>
+                </div>
+
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+                    <div style="grid-column:1/-1;">
+                        <div style="background:var(--gray-100);border-radius:var(--radius-lg);height:320px;display:flex;align-items:center;justify-content:center;font-size:4rem;color:var(--gray-300);border:1px solid var(--gray-200);position:relative;overflow:hidden;">
+                            <i class="fas fa-map" style="position:absolute;font-size:8rem;opacity:0.15;"></i>
+                            <span style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;">
+                                <i class="fas fa-map-pin" style="color:var(--gold);font-size:3rem;"></i>
+                                <span style="font-size:1rem;color:var(--gray-500);font-weight:500;">Ishananad, Wanwadi, Pune</span>
+                                <button class="btn btn-gold btn-sm" onclick="alert('Opening Google Maps…')"><i class="fas fa-directions"></i> Get Directions</button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-map-pin"></i> Address</div>
+                        <div class="card-body">
+                            <p><strong>Ishananad</strong><br />Wanwadi, Pune – 411040<br />Maharashtra, India.</p>
+                            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+                                <button class="btn btn-sm btn-outline" onclick="alert('Opening Google Maps…')"><i class="fas fa-map-marker-alt"></i> Google Maps</button>
+                                <button class="btn btn-sm btn-outline" onclick="alert('Opening Apple Maps…')"><i class="fab fa-apple"></i> Apple Maps</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="card-title"><i class="fas fa-location-dot"></i> Nearby Landmarks</div>
+                        <div class="card-body">
+                            <div class="row"><span class="label">Railway Station</span><span class="value">5.2 km</span></div>
+                            <div class="row"><span class="label">Airport</span><span class="value">12.4 km</span></div>
+                            <div class="row"><span class="label">Ruby Hall Hospital</span><span class="value">3.8 km</span></div>
+                            <div class="row"><span class="label">Bishop's School</span><span class="value">2.1 km</span></div>
+                            <div class="row"><span class="label">MG Road Market</span><span class="value">4.0 km</span></div>
+                            <div class="row"><span class="label">IT Park</span><span class="value">6.5 km</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2478,7 +2338,6 @@
                 const target = document.getElementById('page-' + pageId);
                 if (target) {
                     target.classList.add('active');
-                    // Scroll to top
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
 
@@ -2491,11 +2350,8 @@
                 });
 
                 currentPage = pageId;
-
-                // Close mobile nav
                 closeMobileNavFn();
 
-                // Update URL hash
                 if (pageId !== 'home') {
                     history.pushState(null, '', '#' + pageId);
                 } else {
@@ -2545,7 +2401,6 @@
                 const text = aiInput.value.trim();
                 if (!text) return;
 
-                // Add user message
                 const userMsg = document.createElement('div');
                 userMsg.className = 'msg user';
                 userMsg.textContent = text;
@@ -2554,7 +2409,6 @@
                 aiInput.value = '';
                 aiMessages.scrollTop = aiMessages.scrollHeight;
 
-                // Simulate AI response
                 setTimeout(() => {
                     const botMsg = document.createElement('div');
                     botMsg.className = 'msg bot';
@@ -2581,34 +2435,6 @@
                 }
             }
 
-            // ----- STAR RATING (Feedback) -----
-            function initStars() {
-                const stars = document.querySelectorAll('.feedback-stars .star');
-                let selected = 0;
-
-                stars.forEach(star => {
-                    star.addEventListener('click', function() {
-                        selected = parseInt(this.dataset.value);
-                        stars.forEach(s => {
-                            s.classList.toggle('active', parseInt(s.dataset.value) <= selected);
-                        });
-                    });
-
-                    star.addEventListener('mouseenter', function() {
-                        const val = parseInt(this.dataset.value);
-                        stars.forEach(s => {
-                            s.style.color = parseInt(s.dataset.value) <= val ? 'var(--gold)' : 'var(--gray-300)';
-                        });
-                    });
-
-                    star.addEventListener('mouseleave', function() {
-                        stars.forEach(s => {
-                            s.style.color = s.classList.contains('active') ? 'var(--gold)' : 'var(--gray-300)';
-                        });
-                    });
-                });
-            }
-
             // ----- HASH ROUTING -----
             function routeFromHash() {
                 const hash = window.location.hash.replace('#', '');
@@ -2620,7 +2446,6 @@
             }
 
             // ----- EVENT BINDING -----
-            // Nav links
             navLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2629,15 +2454,12 @@
                 });
             });
 
-            // Mobile nav toggle
             navToggle.addEventListener('click', toggleMobileNav);
             closeMobileNav.addEventListener('click', closeMobileNavFn);
             navOverlay.addEventListener('click', closeMobileNavFn);
 
-            // Dark mode
             darkToggle.addEventListener('click', toggleDarkMode);
 
-            // AI
             aiFab.addEventListener('click', toggleAi);
             closeAi.addEventListener('click', toggleAi);
             aiSend.addEventListener('click', sendAiMessage);
@@ -2645,15 +2467,11 @@
                 if (e.key === 'Enter') sendAiMessage();
             });
 
-            // Scroll
             window.addEventListener('scroll', handleScroll);
-
-            // Hash change
             window.addEventListener('hashchange', routeFromHash);
 
             // ----- INIT -----
             function init() {
-                // Restore dark mode
                 const savedDark = localStorage.getItem('dpp-dark');
                 if (savedDark === 'true') {
                     isDark = true;
@@ -2661,23 +2479,14 @@
                     darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
                 }
 
-                // Route from hash
                 routeFromHash();
-
-                // Init star rating
-                initStars();
-
-                // Header initial state
                 handleScroll();
 
                 console.log('🏠 Digital Property Passport · Ishananad');
                 console.log('📦 v1.0 · Premium Enterprise Platform');
             }
 
-            // Expose navigate for inline use
             window.navigateTo = navigateTo;
-
-            // Go
             init();
 
         })();

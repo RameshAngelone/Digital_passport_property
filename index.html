@@ -559,16 +559,17 @@
             border-color: var(--gold);
         }
 
+        /* ----- SMALLER ICONS FOR DASHBOARD CARDS ----- */
         .dash-card .dash-icon {
-            width: 52px;
-            height: 52px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
             background: var(--gray-100);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 10px;
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             color: var(--gold);
             transition: all var(--transition);
         }
@@ -1408,7 +1409,7 @@
             .dash-card .dash-icon {
                 width: 40px;
                 height: 40px;
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             .dash-card .dash-label {
                 font-size: 0.7rem;
@@ -1546,7 +1547,6 @@
             <li><a href="#" data-page="emergency"><i class="fas fa-phone-alt"></i> Emergency</a></li>
             <li><a href="#" data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
             <li><a href="#" data-page="downloads"><i class="fas fa-download"></i> Downloads</a></li>
-            <!-- QR & Location added to nav -->
             <li><a href="#" data-page="qr"><i class="fas fa-qrcode"></i> QR Code</a></li>
             <li><a href="#" data-page="location"><i class="fas fa-map-pin"></i> Location</a></li>
         </ul>
@@ -1604,10 +1604,8 @@
                             <strong>Makwana Brows and Co.</strong> &middot; Wanwadi, Pune
                         </div>
                         <div class="hero-actions">
+                            <!-- QR and Location removed from top hero as requested -->
                             <a href="#" class="btn btn-gold" data-page="property"><i class="fas fa-home"></i> View Property</a>
-                            <!-- Replaced Documents & Warranty with QR & Location -->
-                            <a href="#" class="btn" data-page="qr"><i class="fas fa-qrcode"></i> QR Code</a>
-                            <a href="#" class="btn" data-page="location"><i class="fas fa-map-pin"></i> Location</a>
                         </div>
                     </div>
                 </div>
@@ -1622,7 +1620,7 @@
                     <a href="#" class="btn" onclick="alert('QR Code scanned.')"><i class="fas fa-qrcode"></i> QR</a>
                 </div>
 
-                <!-- DASHBOARD GRID — Removed: Notices, Feedback, Support, Documents, Warranty. Added: QR, Location -->
+                <!-- DASHBOARD GRID — Smaller icons applied via CSS -->
                 <div class="dash-grid">
                     <a href="#" class="dash-card" data-page="builder">
                         <div class="dash-icon"><i class="fas fa-building"></i></div>
@@ -1634,13 +1632,6 @@
                         <div class="dash-label">Property</div>
                         <div class="dash-count">Details</div>
                     </a>
-                    <!-- QR Card -->
-                    <a href="#" class="dash-card" data-page="qr">
-                        <div class="dash-icon"><i class="fas fa-qrcode"></i></div>
-                        <div class="dash-label">QR Code</div>
-                        <div class="dash-count">Scan</div>
-                    </a>
-                    <!-- Location Card -->
                     <a href="#" class="dash-card" data-page="location">
                         <div class="dash-icon"><i class="fas fa-map-pin"></i></div>
                         <div class="dash-label">Location</div>
@@ -1673,13 +1664,7 @@
                     </a>
                 </div>
 
-                <!-- FOOTER NOTE -->
-                <div style="text-align:center;padding:20px 0 8px;color:var(--gray-400);font-size:0.8rem;border-top:1px solid var(--gray-100);">
-                    <i class="fas fa-qrcode" style="margin-right:6px;color:var(--gold);"></i>
-                    NFC Ready &bull; PWA &bull; Offline Ready
-                    <span style="display:inline-block;margin:0 10px;">|</span>
-                    <i class="fas fa-mobile-alt" style="color:var(--gold);"></i> Install App
-                </div>
+                <!-- FOOTER NOTE — REMOVED as requested -->
             </div>
         </section>
 
@@ -1827,7 +1812,7 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: DOCUMENTS (kept, not removed)
+        PAGE: DOCUMENTS
         ========================================================== -->
         <section class="page" id="page-documents" role="tabpanel">
             <div class="container section-padding">
@@ -1857,7 +1842,7 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: WARRANTY (kept, not removed)
+        PAGE: WARRANTY
         ========================================================== -->
         <section class="page" id="page-warranty" role="tabpanel">
             <div class="container section-padding">
@@ -2193,7 +2178,7 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: QR (New)
+        PAGE: QR
         ========================================================== -->
         <section class="page" id="page-qr" role="tabpanel">
             <div class="container section-padding">
@@ -2223,7 +2208,7 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: LOCATION (New)
+        PAGE: LOCATION
         ========================================================== -->
         <section class="page" id="page-location" role="tabpanel">
             <div class="container section-padding">

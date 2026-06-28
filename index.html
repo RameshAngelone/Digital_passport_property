@@ -214,7 +214,7 @@
         }
 
         /* ==========================================================
-               HEADER / NAV
+               HEADER — clean, no extra buttons
                ========================================================== */
         .app-header {
             position: sticky;
@@ -282,133 +282,7 @@
             align-items: center;
             gap: 6px;
         }
-
-        .header-actions .btn-icon {
-            width: 42px;
-            height: 42px;
-            background: transparent;
-            color: var(--navy);
-            box-shadow: none;
-            border-radius: 50%;
-            font-size: 1.1rem;
-        }
-        .header-actions .btn-icon:hover {
-            background: var(--gray-100);
-            transform: none;
-            box-shadow: none;
-        }
-
-        /* ----- MOBILE NAV TOGGLE ----- */
-        .nav-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 6px;
-        }
-        .nav-toggle span {
-            display: block;
-            width: 26px;
-            height: 2.5px;
-            background: var(--navy);
-            border-radius: 4px;
-            transition: all var(--transition);
-        }
-        .nav-toggle.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-        .nav-toggle.active span:nth-child(2) {
-            opacity: 0;
-        }
-        .nav-toggle.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
-
-        /* ----- SIDEBAR NAV (Mobile) ----- */
-        .mobile-nav {
-            position: fixed;
-            top: 0;
-            left: -100%;
-            width: 300px;
-            height: 100vh;
-            background: var(--white);
-            z-index: 1100;
-            padding: 24px 20px 40px;
-            overflow-y: auto;
-            transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: var(--shadow-xl);
-            border-right: 1px solid var(--gray-100);
-        }
-        .mobile-nav.open {
-            left: 0;
-        }
-
-        .mobile-nav .nav-close {
-            display: flex;
-            justify-content: flex-end;
-            margin-bottom: 20px;
-        }
-        .mobile-nav .nav-close button {
-            background: transparent;
-            border: none;
-            font-size: 1.6rem;
-            color: var(--gray-500);
-            cursor: pointer;
-            padding: 4px 8px;
-        }
-
-        .mobile-nav .nav-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-        .mobile-nav .nav-list li a {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 14px 16px;
-            border-radius: var(--radius-sm);
-            color: var(--navy);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: all var(--transition);
-        }
-        .mobile-nav .nav-list li a:hover,
-        .mobile-nav .nav-list li a.active {
-            background: var(--gray-100);
-            color: var(--gold);
-        }
-        .mobile-nav .nav-list li a i {
-            width: 24px;
-            color: var(--gray-500);
-            font-size: 1.1rem;
-        }
-        .mobile-nav .nav-list li a.active i {
-            color: var(--gold);
-        }
-
-        .nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(10, 22, 40, 0.40);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            z-index: 1050;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        .nav-overlay.open {
-            opacity: 1;
-            pointer-events: auto;
-        }
+        /* No extra buttons; keep empty */
 
         /* ==========================================================
                PAGES / SECTIONS
@@ -559,7 +433,6 @@
             border-color: var(--gold);
         }
 
-        /* ----- SMALLER ICONS FOR DASHBOARD CARDS ----- */
         .dash-card .dash-icon {
             width: 44px;
             height: 44px;
@@ -907,24 +780,24 @@
         }
 
         /* ==========================================================
-               EMERGENCY
+               EMERGENCY — smaller buttons and compact layout
                ========================================================== */
         .emergency-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 14px;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
         }
 
         .emergency-item {
             background: var(--white);
             border-radius: var(--radius-md);
-            padding: 18px 16px;
+            padding: 14px 14px;
             border-left: 4px solid var(--gold);
             box-shadow: var(--shadow-sm);
             transition: all var(--transition);
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
         }
 
         .emergency-item:hover {
@@ -934,11 +807,11 @@
 
         .emergency-item .emergency-name {
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
         }
 
         .emergency-item .emergency-number {
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--navy);
             letter-spacing: 0.02em;
@@ -946,17 +819,19 @@
 
         .emergency-item .emergency-actions {
             display: flex;
-            gap: 8px;
-            margin-top: 6px;
+            gap: 6px;
+            margin-top: 4px;
+            flex-wrap: wrap;
         }
         .emergency-item .emergency-actions .btn {
-            padding: 6px 14px;
-            font-size: 0.75rem;
+            padding: 4px 10px;
+            font-size: 0.7rem;
             border-radius: 30px;
             background: var(--gray-50);
             color: var(--navy);
             border: 1px solid var(--gray-200);
             box-shadow: none;
+            min-width: 34px;
         }
         .emergency-item .emergency-actions .btn:hover {
             border-color: var(--gold);
@@ -1250,75 +1125,6 @@
         }
 
         /* ==========================================================
-               DARK MODE
-               ========================================================== */
-        body.dark-mode {
-            --white: #0F1A2E;
-            --gray-50: #162033;
-            --gray-100: #1E2A42;
-            --gray-200: #2A3A58;
-            --gray-300: #3E5270;
-            --gray-400: #6B7F9B;
-            --gray-500: #94A7C0;
-            --gray-600: #B8C8DD;
-            --navy: #E8EDF5;
-            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.30);
-            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.40);
-            --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.50);
-            --shadow-xl: 0 24px 80px rgba(0, 0, 0, 0.55);
-        }
-
-        body.dark-mode .app-header {
-            background: rgba(15, 26, 46, 0.92);
-            border-bottom-color: rgba(255, 255, 255, 0.04);
-        }
-
-        body.dark-mode .glass-card {
-            background: rgba(15, 26, 46, 0.70);
-            border-color: rgba(255, 255, 255, 0.06);
-        }
-
-        body.dark-mode .dash-card,
-        body.dark-mode .info-card,
-        body.dark-mode .doc-card,
-        body.dark-mode .warranty-card,
-        body.dark-mode .service-item,
-        body.dark-mode .emergency-item,
-        body.dark-mode .bank-card,
-        body.dark-mode .gallery-item {
-            background: var(--gray-50);
-            border-color: var(--gray-200);
-        }
-
-        body.dark-mode .hero-banner {
-            background: var(--gray-100);
-        }
-
-        body.dark-mode .ai-modal {
-            background: var(--gray-50);
-            border-color: var(--gray-200);
-        }
-
-        body.dark-mode .ai-modal .ai-header {
-            background: var(--gray-100);
-        }
-
-        body.dark-mode .ai-modal .ai-messages .msg.bot {
-            background: var(--gray-200);
-            color: var(--white);
-        }
-
-        body.dark-mode .quick-contact .btn {
-            background: var(--gray-100);
-            color: var(--white);
-            border-color: var(--gray-200);
-        }
-
-        body.dark-mode .header-actions .btn-icon {
-            color: var(--white);
-        }
-
-        /* ==========================================================
                RESPONSIVE
                ========================================================== */
         @media (max-width: 768px) {
@@ -1355,20 +1161,6 @@
 
             .gallery-grid {
                 grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            }
-
-            .mobile-nav {
-                width: 280px;
-            }
-
-            .nav-toggle {
-                display: flex;
-            }
-
-            .header-actions .btn-icon {
-                width: 38px;
-                height: 38px;
-                font-size: 1rem;
             }
 
             .ai-modal {
@@ -1425,16 +1217,6 @@
 
             .hero-banner h1 {
                 font-size: 1.6rem;
-            }
-        }
-
-        @media (min-width: 769px) {
-            .mobile-nav,
-            .nav-overlay {
-                display: none !important;
-            }
-            .nav-toggle {
-                display: none !important;
             }
         }
 
@@ -1523,37 +1305,7 @@
 <body>
 
     <!-- ==========================================================
-    NAV OVERLAY
-    ========================================================== -->
-    <div class="nav-overlay" id="navOverlay"></div>
-
-    <!-- ==========================================================
-    MOBILE NAV
-    ========================================================== -->
-    <nav class="mobile-nav" id="mobileNav" role="navigation" aria-label="Mobile Navigation">
-        <div class="nav-close">
-            <button id="closeMobileNav" aria-label="Close navigation">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <ul class="nav-list">
-            <li><a href="#" data-page="home" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
-            <li><a href="#" data-page="builder"><i class="fas fa-building"></i> Builder</a></li>
-            <li><a href="#" data-page="property"><i class="fas fa-home"></i> Property</a></li>
-            <li><a href="#" data-page="documents"><i class="fas fa-file-alt"></i> Documents</a></li>
-            <li><a href="#" data-page="warranty"><i class="fas fa-shield-alt"></i> Warranty</a></li>
-            <li><a href="#" data-page="services"><i class="fas fa-tools"></i> Services</a></li>
-            <li><a href="#" data-page="bank"><i class="fas fa-university"></i> Bank</a></li>
-            <li><a href="#" data-page="emergency"><i class="fas fa-phone-alt"></i> Emergency</a></li>
-            <li><a href="#" data-page="gallery"><i class="fas fa-images"></i> Gallery</a></li>
-            <li><a href="#" data-page="downloads"><i class="fas fa-download"></i> Downloads</a></li>
-            <li><a href="#" data-page="qr"><i class="fas fa-qrcode"></i> QR Code</a></li>
-            <li><a href="#" data-page="location"><i class="fas fa-map-pin"></i> Location</a></li>
-        </ul>
-    </nav>
-
-    <!-- ==========================================================
-    APP HEADER
+    APP HEADER — clean, no extra buttons
     ========================================================== -->
     <header class="app-header" id="appHeader" role="banner">
         <div class="container header-inner">
@@ -1564,23 +1316,7 @@
                     <small>Ishananad · Wanwadi</small>
                 </span>
             </a>
-
-            <div class="header-actions">
-                <!-- Dark Mode Toggle -->
-                <button class="btn-icon" id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <!-- Search (demo) -->
-                <button class="btn-icon" id="searchToggle" aria-label="Search" title="Search">
-                    <i class="fas fa-search"></i>
-                </button>
-                <!-- Mobile Nav Toggle -->
-                <button class="nav-toggle" id="navToggle" aria-label="Open navigation" aria-expanded="false">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </div>
+            <!-- No extra buttons in header -->
         </div>
     </header>
 
@@ -1604,7 +1340,6 @@
                             <strong>Makwana Brows and Co.</strong> &middot; Wanwadi, Pune
                         </div>
                         <div class="hero-actions">
-                            <!-- QR and Location removed from top hero as requested -->
                             <a href="#" class="btn btn-gold" data-page="property"><i class="fas fa-home"></i> View Property</a>
                         </div>
                     </div>
@@ -1620,7 +1355,7 @@
                     <a href="#" class="btn" onclick="alert('QR Code scanned.')"><i class="fas fa-qrcode"></i> QR</a>
                 </div>
 
-                <!-- DASHBOARD GRID — Smaller icons applied via CSS -->
+                <!-- DASHBOARD GRID — Location removed -->
                 <div class="dash-grid">
                     <a href="#" class="dash-card" data-page="builder">
                         <div class="dash-icon"><i class="fas fa-building"></i></div>
@@ -1632,11 +1367,7 @@
                         <div class="dash-label">Property</div>
                         <div class="dash-count">Details</div>
                     </a>
-                    <a href="#" class="dash-card" data-page="location">
-                        <div class="dash-icon"><i class="fas fa-map-pin"></i></div>
-                        <div class="dash-label">Location</div>
-                        <div class="dash-count">Map</div>
-                    </a>
+                    <!-- Location card removed -->
                     <a href="#" class="dash-card" data-page="services">
                         <div class="dash-icon"><i class="fas fa-tools"></i></div>
                         <div class="dash-label">Services</div>
@@ -1664,7 +1395,7 @@
                     </a>
                 </div>
 
-                <!-- FOOTER NOTE — REMOVED as requested -->
+                <!-- No footer -->
             </div>
         </section>
 
@@ -2087,7 +1818,7 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: EMERGENCY
+        PAGE: EMERGENCY — smaller buttons
         ========================================================== -->
         <section class="page" id="page-emergency" role="tabpanel">
             <div class="container section-padding">
@@ -2098,18 +1829,18 @@
                 </div>
 
                 <div class="emergency-grid">
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-police" style="color:var(--gold);margin-right:6px;"></i> Police</div><div class="emergency-number">100</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Police…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-fire" style="color:var(--gold);margin-right:6px;"></i> Fire Brigade</div><div class="emergency-number">101</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Fire Brigade…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-ambulance" style="color:var(--gold);margin-right:6px;"></i> Ambulance</div><div class="emergency-number">108</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Ambulance…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-hospital" style="color:var(--gold);margin-right:6px;"></i> Ruby Hall Hospital</div><div class="emergency-number">020 2612 3456</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Hospital…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-bolt" style="color:var(--gold);margin-right:6px;"></i> Electric Dept.</div><div class="emergency-number">1912</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Electric Dept…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-water" style="color:var(--gold);margin-right:6px;"></i> Water Dept.</div><div class="emergency-number">1916</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Water Dept…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-gas-pump" style="color:var(--gold);margin-right:6px;"></i> Gas Agency</div><div class="emergency-number">1800 123 456</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Gas Agency…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-building" style="color:var(--gold);margin-right:6px;"></i> Society Office</div><div class="emergency-number">020 2612 7890</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Society Office…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-shield-alt" style="color:var(--gold);margin-right:6px;"></i> Security Gate</div><div class="emergency-number">020 2612 7891</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Security…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-elevator" style="color:var(--gold);margin-right:6px;"></i> Lift Emergency</div><div class="emergency-number">1800 200 333</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Lift Emergency…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-hard-hat" style="color:var(--gold);margin-right:6px;"></i> Builder Emergency</div><div class="emergency-number">+91 98220 12345</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Builder Emergency…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
-                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-headset" style="color:var(--gold);margin-right:6px;"></i> 24x7 Helpline</div><div class="emergency-number">1800 123 8888</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Helpline…')"><i class="fas fa-phone"></i> Call</button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-police" style="color:var(--gold);margin-right:6px;"></i> Police</div><div class="emergency-number">100</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Police…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-fire" style="color:var(--gold);margin-right:6px;"></i> Fire Brigade</div><div class="emergency-number">101</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Fire Brigade…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-ambulance" style="color:var(--gold);margin-right:6px;"></i> Ambulance</div><div class="emergency-number">108</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Ambulance…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-hospital" style="color:var(--gold);margin-right:6px;"></i> Ruby Hall Hospital</div><div class="emergency-number">020 2612 3456</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Hospital…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-bolt" style="color:var(--gold);margin-right:6px;"></i> Electric Dept.</div><div class="emergency-number">1912</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Electric Dept…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-water" style="color:var(--gold);margin-right:6px;"></i> Water Dept.</div><div class="emergency-number">1916</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Water Dept…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-gas-pump" style="color:var(--gold);margin-right:6px;"></i> Gas Agency</div><div class="emergency-number">1800 123 456</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Gas Agency…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-building" style="color:var(--gold);margin-right:6px;"></i> Society Office</div><div class="emergency-number">020 2612 7890</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Society Office…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-shield-alt" style="color:var(--gold);margin-right:6px;"></i> Security Gate</div><div class="emergency-number">020 2612 7891</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Security…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-elevator" style="color:var(--gold);margin-right:6px;"></i> Lift Emergency</div><div class="emergency-number">1800 200 333</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Lift Emergency…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-hard-hat" style="color:var(--gold);margin-right:6px;"></i> Builder Emergency</div><div class="emergency-number">+91 98220 12345</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Builder Emergency…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
+                    <div class="emergency-item"><div class="emergency-name"><i class="fas fa-headset" style="color:var(--gold);margin-right:6px;"></i> 24x7 Helpline</div><div class="emergency-number">1800 123 8888</div><div class="emergency-actions"><button class="btn" onclick="alert('Calling Helpline…')"><i class="fas fa-phone"></i></button><button class="btn" onclick="alert('Opening WhatsApp…')"><i class="fab fa-whatsapp"></i></button><button class="btn" onclick="alert('Opening Maps…')"><i class="fas fa-map-marker-alt"></i></button></div></div>
                 </div>
             </div>
         </section>
@@ -2178,7 +1909,7 @@
         </section>
 
         <!-- ==========================================================
-        PAGE: QR
+        PAGE: QR (still available)
         ========================================================== -->
         <section class="page" id="page-qr" role="tabpanel">
             <div class="container section-padding">
@@ -2201,55 +1932,6 @@
                         </div>
                         <div style="margin-top:16px;padding:12px 16px;background:var(--gray-50);border-radius:var(--radius-sm);font-size:0.85rem;color:var(--gray-500);">
                             <i class="fas fa-nfc-symbol" style="color:var(--gold);margin-right:8px;"></i> NFC Ready — Tap to share
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================================
-        PAGE: LOCATION
-        ========================================================== -->
-        <section class="page" id="page-location" role="tabpanel">
-            <div class="container section-padding">
-                <div class="page-header">
-                    <a href="#" class="back-link" data-page="home"><i class="fas fa-arrow-left"></i> Dashboard</a>
-                    <h2 class="section-title">Location</h2>
-                    <p class="section-subtitle">Find Ishananad — Wanwadi, Pune</p>
-                </div>
-
-                <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
-                    <div style="grid-column:1/-1;">
-                        <div style="background:var(--gray-100);border-radius:var(--radius-lg);height:320px;display:flex;align-items:center;justify-content:center;font-size:4rem;color:var(--gray-300);border:1px solid var(--gray-200);position:relative;overflow:hidden;">
-                            <i class="fas fa-map" style="position:absolute;font-size:8rem;opacity:0.15;"></i>
-                            <span style="position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;">
-                                <i class="fas fa-map-pin" style="color:var(--gold);font-size:3rem;"></i>
-                                <span style="font-size:1rem;color:var(--gray-500);font-weight:500;">Ishananad, Wanwadi, Pune</span>
-                                <button class="btn btn-gold btn-sm" onclick="alert('Opening Google Maps…')"><i class="fas fa-directions"></i> Get Directions</button>
-                            </span>
-                        </div>
-                    </div>
-
-                    <div class="info-card">
-                        <div class="card-title"><i class="fas fa-map-pin"></i> Address</div>
-                        <div class="card-body">
-                            <p><strong>Ishananad</strong><br />Wanwadi, Pune – 411040<br />Maharashtra, India.</p>
-                            <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
-                                <button class="btn btn-sm btn-outline" onclick="alert('Opening Google Maps…')"><i class="fas fa-map-marker-alt"></i> Google Maps</button>
-                                <button class="btn btn-sm btn-outline" onclick="alert('Opening Apple Maps…')"><i class="fab fa-apple"></i> Apple Maps</button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="info-card">
-                        <div class="card-title"><i class="fas fa-location-dot"></i> Nearby Landmarks</div>
-                        <div class="card-body">
-                            <div class="row"><span class="label">Railway Station</span><span class="value">5.2 km</span></div>
-                            <div class="row"><span class="label">Airport</span><span class="value">12.4 km</span></div>
-                            <div class="row"><span class="label">Ruby Hall Hospital</span><span class="value">3.8 km</span></div>
-                            <div class="row"><span class="label">Bishop's School</span><span class="value">2.1 km</span></div>
-                            <div class="row"><span class="label">MG Road Market</span><span class="value">4.0 km</span></div>
-                            <div class="row"><span class="label">IT Park</span><span class="value">6.5 km</span></div>
                         </div>
                     </div>
                 </div>
@@ -2284,7 +1966,7 @@
     </div>
 
     <!-- ==========================================================
-    JAVASCRIPT — APP.JS
+    JAVASCRIPT — APP.JS (simplified, no dark mode or mobile nav)
     ========================================================== -->
     <script>
         /* ==========================================================
@@ -2297,11 +1979,6 @@
             // ----- DOM REFS -----
             const pages = document.querySelectorAll('.page');
             const navLinks = document.querySelectorAll('[data-page]');
-            const mobileNav = document.getElementById('mobileNav');
-            const navOverlay = document.getElementById('navOverlay');
-            const navToggle = document.getElementById('navToggle');
-            const closeMobileNav = document.getElementById('closeMobileNav');
-            const darkToggle = document.getElementById('darkModeToggle');
             const aiFab = document.getElementById('aiFab');
             const aiModal = document.getElementById('aiModal');
             const closeAi = document.getElementById('closeAi');
@@ -2311,32 +1988,23 @@
             const header = document.getElementById('appHeader');
 
             let currentPage = 'home';
-            let isDark = false;
             let aiOpen = false;
 
             // ----- PAGE NAVIGATION -----
             function navigateTo(pageId) {
-                // Hide all pages
                 pages.forEach(p => p.classList.remove('active'));
-
-                // Show target
                 const target = document.getElementById('page-' + pageId);
                 if (target) {
                     target.classList.add('active');
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }
-
-                // Update nav links
                 navLinks.forEach(link => {
                     link.classList.remove('active');
                     if (link.dataset.page === pageId) {
                         link.classList.add('active');
                     }
                 });
-
                 currentPage = pageId;
-                closeMobileNavFn();
-
                 if (pageId !== 'home') {
                     history.pushState(null, '', '#' + pageId);
                 } else {
@@ -2344,42 +2012,11 @@
                 }
             }
 
-            // ----- CLOSE MOBILE NAV -----
-            function closeMobileNavFn() {
-                mobileNav.classList.remove('open');
-                navOverlay.classList.remove('open');
-                navToggle.classList.remove('active');
-                navToggle.setAttribute('aria-expanded', 'false');
-            }
-
-            // ----- TOGGLE MOBILE NAV -----
-            function toggleMobileNav() {
-                const isOpen = mobileNav.classList.contains('open');
-                if (isOpen) {
-                    closeMobileNavFn();
-                } else {
-                    mobileNav.classList.add('open');
-                    navOverlay.classList.add('open');
-                    navToggle.classList.add('active');
-                    navToggle.setAttribute('aria-expanded', 'true');
-                }
-            }
-
-            // ----- DARK MODE -----
-            function toggleDarkMode() {
-                isDark = !isDark;
-                document.body.classList.toggle('dark-mode', isDark);
-                darkToggle.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
-                localStorage.setItem('dpp-dark', isDark ? 'true' : 'false');
-            }
-
             // ----- AI CHAT -----
             function toggleAi() {
                 aiOpen = !aiOpen;
                 aiModal.classList.toggle('open', aiOpen);
-                if (aiOpen) {
-                    aiInput.focus();
-                }
+                if (aiOpen) aiInput.focus();
             }
 
             function sendAiMessage() {
@@ -2390,7 +2027,6 @@
                 userMsg.className = 'msg user';
                 userMsg.textContent = text;
                 aiMessages.appendChild(userMsg);
-
                 aiInput.value = '';
                 aiMessages.scrollTop = aiMessages.scrollHeight;
 
@@ -2413,11 +2049,7 @@
 
             // ----- HEADER SCROLL EFFECT -----
             function handleScroll() {
-                if (window.scrollY > 20) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
+                header.classList.toggle('scrolled', window.scrollY > 20);
             }
 
             // ----- HASH ROUTING -----
@@ -2439,12 +2071,6 @@
                 });
             });
 
-            navToggle.addEventListener('click', toggleMobileNav);
-            closeMobileNav.addEventListener('click', closeMobileNavFn);
-            navOverlay.addEventListener('click', closeMobileNavFn);
-
-            darkToggle.addEventListener('click', toggleDarkMode);
-
             aiFab.addEventListener('click', toggleAi);
             closeAi.addEventListener('click', toggleAi);
             aiSend.addEventListener('click', sendAiMessage);
@@ -2457,16 +2083,8 @@
 
             // ----- INIT -----
             function init() {
-                const savedDark = localStorage.getItem('dpp-dark');
-                if (savedDark === 'true') {
-                    isDark = true;
-                    document.body.classList.add('dark-mode');
-                    darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                }
-
                 routeFromHash();
                 handleScroll();
-
                 console.log('🏠 Digital Property Passport · Ishananad');
                 console.log('📦 v1.0 · Premium Enterprise Platform');
             }
